@@ -24,7 +24,7 @@
     <link href="{{ asset('asset/back/vendor/morrisjs/morris.css')}}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="{{ asset('asset/back/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('asset/back/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"> @stack('extra-css')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -109,6 +109,7 @@
 
         <!-- Custom Theme JavaScript -->
         <script src="{{ asset('asset/back/dist/js/sb-admin-2.js')}}"></script>
+        @stack('extra-scripts')
         <script>
             $(document).ready(function() {
                 setTimeout(function() {
