@@ -34,42 +34,44 @@
                     @method('POST') @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Enter founder name</label>
+                            <label for="exampleInputEmail1">Enter name</label>
                             <input type="text" name="name" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Enter designation</label>
-                            <input type="text" name="designation" class="form-control">
+                            <label for="exampleInputEmail1">Location</label>
+                            <input type="text" name="location" class="form-control">
                         </div>
+
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Image</label>
-                            <input type="file" name="image" class="form-control">
+                            <label for="exampleInputEmail1">Mobile</label>
+                            <input type="text" name="phone" class="form-control">
                         </div>
 
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="text" name="email" class="form-control">
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <label for="exampleInputEmail1">Image</label>
+                            <input type="file" name="image" class="form-control">
+                        </div> -->
 
                     </div>
 
-                    <!-- /.card-body -->
+
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>
-            <!-- /.card -->
-
-            <!-- Form Element sizes -->
-
-
         </div>
         <!-- /.card-body -->
 </div>
-<!-- /.card -->
-<!-- Horizontal Form -->
-
-<!-- /.card -->
 
 </div>
 </section>

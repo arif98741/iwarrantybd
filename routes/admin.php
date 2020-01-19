@@ -10,6 +10,35 @@ Route::namespace('Admin')->group(function () {
     Route::match(['get', 'post'], 'setting', 'AdminController@setting')->name('setting');
     Route::resource('faq', 'FaqController')->except(['show']);
     Route::resource('center', 'CenterController')->except(['show']);
+
+    Route::namespace('Report')->group(function () {
+        Route::group(['prefix' => 'report'], function () {
+            Route::get('/', 'ReportController@index')->name('report');
+            Route::group(['prefix' => 'claim'], function () {
+                Route::get('/', 'ClaimReportController@index');
+                Route::post('action', 'ClaimReportController@index');
+                Route::post('view/{type}/{from}/{to}', 'ClaimReportController@action');
+            });
+
+            Route::group(['prefix' => 'vendor'], function () {
+                Route::get('/', 'VendorReportController@index');
+            });
+
+            Route::group(['prefix' => 'subscription'], function () {
+                Route::get('/', 'SubscriptionReportController@index');
+            });
+
+            Route::group(['prefix' => 'subscriber'], function () {
+                Route::get('/', 'SubscriberReportController@index');
+            });
+
+            Route::group(['prefix' => 'center'], function () {
+                Route::get('/', 'SubscriptionReportController@index');
+            });
+        });
+    });
+
+
     //Route::resource('page', 'PageController')->except(['store', 'show', 'destroy']);
     Route::resource('package', 'PackageController')->except(['store', 'show', 'destroy']);
     //Route::resource('invoice', 'InvoiceController')->except(['destroy']);

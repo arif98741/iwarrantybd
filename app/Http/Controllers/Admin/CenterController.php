@@ -9,6 +9,8 @@ use Session;
 
 class CenterController extends Controller
 {
+    private $path = 'admin.center.';
+
     public function index()
     {
         $data =   [
@@ -16,8 +18,7 @@ class CenterController extends Controller
 
         ];
 
-
-        return view('admin.center.index')->with($data);
+        return view($this->path . 'index')->with($data);
     }
 
 
@@ -36,10 +37,10 @@ class CenterController extends Controller
         $center->email = $request->email;
         if ($center->save()) {
             Session::flash('success', 'Center saved successful');
-            return redirect(route('admin.center.index'));
+            return redirect(route($this->path . 'index'));
         } else {
             Session::flash('success', 'Center insert failed!');
-            return redirect(route('admin.center.index'));
+            return redirect(route($this->path . 'index'));
         }
     }
 
@@ -50,7 +51,7 @@ class CenterController extends Controller
             'center' => $center
 
         ];
-        return view('admin.center.edit')->with($data);
+        return view($this->path . 'edit')->with($data);
     }
 
 
@@ -63,10 +64,10 @@ class CenterController extends Controller
 
         if ($center->save()) {
             Session::flash('success', 'Center updated successful');
-            return redirect(route('admin.center.index'));
+            return redirect(route($this->path . 'index'));
         } else {
             Session::flash('success', 'Center updated successful');
-            return redirect(route('admin.center.index'));
+            return redirect(route($this->path . 'index'));
         }
     }
 }

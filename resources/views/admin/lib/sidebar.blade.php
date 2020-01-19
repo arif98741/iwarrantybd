@@ -72,6 +72,9 @@
 
                 </ul>
             </li>
+            <li>
+                <a href="{{ route('admin.report') }}"><i class="fa fa-bar-chart fa-fw"></i> Report</a>
+            </li>
 
             <li>
                 <a href="#"><i class="fa fa-question fa-fw"></i> FAQ<span class="fa arrow"></span></a>
@@ -80,12 +83,9 @@
                         <a href="{{ route('admin.faq.index') }}">FAQ List</a>
                     </li>
 
-
                     <li>
                         <a href="{{ route('admin.faq.create') }}">Add FAQ</a>
                     </li>
-
-
 
                 </ul>
             </li>
