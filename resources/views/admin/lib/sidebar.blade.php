@@ -7,12 +7,12 @@
             </li>
 
             <li>
-                <a href="{{ url('/') }}" target="_blank"><i class="fa fa-earth fa-fw"></i> Visit Site</a>
+                <a href="{{ url('/') }}" target="_blank"><i class="fa fa-globe fa-fw"></i> Visit Site</a>
             </li>
 
 
             <li>
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Test</a>
+                <a href="#"><i class="fa fa-sticky-note fa-fw"></i> Test</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-list fa-fw"></i> Claim Request<span class="fa arrow"></span></a>
@@ -41,7 +41,7 @@
             </li>
 
             <li>
-                <a href="#"><i class="fa fa-list fa-fw"></i> Vendor<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-users fa-fw"></i> Vendor<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{ route('admin.vendor.index') }}">Vendor List</a>
@@ -63,20 +63,41 @@
 
                 </ul>
             </li>
-
             <li>
-                <a href="#"><i class="fa fa-question fa-fw"></i> QA<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-university fa-fw"></i> Service Center<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="panels-wells.html">QA List</a>
+                        <a href="{{ route('admin.center.index') }}">Service Center List</a>
                     </li>
+
+
+                    <li>
+                        <a href="{{ route('admin.center.create') }}">Add Service Center</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-question fa-fw"></i> FAQ<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ route('admin.faq.index') }}">FAQ List</a>
+                    </li>
+
+
+                    <li>
+                        <a href="{{ route('admin.faq.create') }}">Add FAQ</a>
+                    </li>
+
+
 
                 </ul>
             </li>
 
 
             <li>
-                <a href="{{ url('admin.settings') }}"><i class="fa fa-edit fa-fw"></i> Setting</a>
+                <a href="{{ route('admin.setting') }}"><i class="fa fa-cog fa-fw"></i> Setting</a>
             </li>
         </ul>
     </div>

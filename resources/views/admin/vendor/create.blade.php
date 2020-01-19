@@ -91,21 +91,4 @@
 </div>
 </section>
 </div>
-@push('extra-css')
-<link rel="stylesheet" href="{{asset('asset/back/vendor/datatables/css/dataTables.bootstrap4.css')}}"> @endpush @push('extra-scripts')
-<script src="{{asset('asset/back/vendor/datatables/js/jquery.dataTables.js')}}"></script>
-<script src="{{asset('asset/back/vendor/datatables/js/dataTables.bootstrap4.js')}}"></script>
-<script>
-    $(function() {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-        });
-    });
-</script>
-@endpush @endsection
+@endsection

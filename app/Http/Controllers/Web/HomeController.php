@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
-use App\Models\Package;
+use Auth;
+use Session;
+use Carbon\Carbon;
 use App\Models\Page;
-use  App\Models\Invoice;
+use App\Models\Package;
+use App\Models\Setting;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Session;
-use Auth;
-use Carbon\Carbon;
-
-
+use App\Http\Controllers\Controller;
+use App\Models\Faq;
 
 class HomeController extends Controller
 {
@@ -25,6 +24,8 @@ class HomeController extends Controller
             // 'standard'      => Package::where('title', 'STANDARD')->first(),
             // 'business'      => Package::where('title', 'BUSINESS')->first(),
             // 'premium'       => Package::where('title', 'PREMIUM')->first(),
+            'setting'          => Setting::first(),
+            'faqs'              => Faq::orderBy('id', 'desc')->get(),
         ];
 
         return view('web.home')->with($data);

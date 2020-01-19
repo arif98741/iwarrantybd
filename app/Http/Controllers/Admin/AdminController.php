@@ -19,6 +19,7 @@ class AdminController extends Controller
             'total_subscriber' => Subscriber::all()->count(),
             'pending_claim' => Claim::where('status', 0)->count(),
             'completed_claim' => Claim::where('status', 1)->count(),
+            'recent_claims' => Claim::orderBy('id', 'desc')->limit(5)->get()
         ];
         return view('admin.dashboard')->with($data);
     }

@@ -69,7 +69,5 @@
 
 </div>
 </section>
-
-<!-- /.content -->
 </div>
-@push('extra-scripts') @endpush @endsection
+@endsection

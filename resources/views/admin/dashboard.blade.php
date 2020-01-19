@@ -100,28 +100,32 @@
     </div>
 </div>
 
+<br>
+<h3>Recent Claims</h3>
 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline">
     <thead>
         <tr>
             <th>Serial</th>
             <th>Name</th>
-            <th>Department</th>
+            <th>Model</th>
+            <th>IMEI</th>
+            <th>Received on</th>
         </tr>
 
     </thead>
     <tbody>
+        @foreach($recent_claims as $key=> $recent_claim)
         <tr>
-            <td>1</td>
-            <td>Ariful islam</td>
-            <td>CSE</td>
+            <td>{{ ++$key }}</td>
+            <td>{{ $recent_claim->name}}</td>
+            <td>{{ $recent_claim->model}}</td>
+            <td>{{ $recent_claim->imei}}</td>
+            <td class="text-center">{{ date('d-m-Y',strtotime($recent_claim->created_at)) }}</td>
+
         </tr>
 
+        @endforeach
 
-        <tr>
-            <td>1</td>
-            <td>Ariful islam</td>
-            <td>CSE</td>
-        </tr>
 
 
     </tbody>

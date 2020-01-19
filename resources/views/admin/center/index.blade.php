@@ -1,5 +1,10 @@
-@extends('layout.admin.admin') @section('title','Invoice') @section('content')
+@extends('layout.admin.admin') @section('title','Center') @section('content')
 <div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Center</h2>
+        </div>
+    </div>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -11,13 +16,13 @@
 
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Invoice List</h1>
+                <div class="col-sm-7">
+
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-5">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Invoice List</li>
+                        <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}" style="color: #000 !important;">Home</a></li>
+                        <li class="breadcrumb-item">Center list</li>
                     </ol>
                 </div>
             </div>
@@ -41,37 +46,23 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Invoice ID</th>
+                                            <th>#</th>
                                             <th>Name</th>
+                                            <th>Address</th>
+                                            <th>Phone</th>
                                             <th>Email</th>
-                                            <th>Package</th>
-                                            <th>Price</th>
-                                            <!-- <th>Action</th> -->
+                                            <th>Registered On</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        @foreach($invoices as $invoice)
+                                        @foreach($centers as $key=> $center)
                                         <tr>
 
-                                            <td>{{ date('d-m-Y',strtotime($invoice->created_at)) }}</td>
-                                            <td>{{ $invoice->id }}</td>
-                                            <td>{{ $invoice->name }}</td>
-                                            <td>{{ $invoice->email }}</td>
-                                            <td>{{ $invoice->package->title }}</td>
-                                            <td>{{ $invoice->package->price }}</td>
-
-                                            <!-- <td>
-                                               <a href="{{ route('admin.page.edit',$invoice->id) }}"><i
-                                                        class="fa fa-edit btn btn-primary"></i></a>
-
-                                                <a href="{{ route('admin.page.edit',$invoice->id) }}"><i
-                                                        class="fa fa-eye btn btn-success"></i></a>
-
-
-                                            </td> -->
-
+                                            <td>{{ ++$key }}</td>
+                                            <td>{{ $center->name }}</td>
+                                            <td>{{ $center->mobile }}</td>
+                                            <td>{{ $center->address }}</td>
+                                            <td>{{ date('d-m-Y',strtotime($center->created_at)) }}</td>
                                         </tr>
                                         @endforeach
 
@@ -91,4 +82,21 @@
     </section>
     <!-- /.content -->
 </div>
-@endsection
+@push('extra-css')
+<link rel="stylesheet" href="{{asset('asset/back/vendor/datatables/css/dataTables.bootstrap4.css')}}"> @endpush @push('extra-scripts')
+<script src="{{asset('asset/back/vendor/datatables/js/jquery.dataTables.js')}}"></script>
+<script src="{{asset('asset/back/vendor/datatables/js/dataTables.bootstrap4.js')}}"></script>
+<script>
+    $(function() {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+        });
+    });
+</script>
+@endpush @endsection

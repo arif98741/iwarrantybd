@@ -9,10 +9,10 @@
                     </a>
                 </div>
                 <div class="float-right">
-                    <p class="email">rakib@gmail.com</p>
+                    <p class="email">{{ $setting->email }}</p>
                 </div>
                 <div class="float-right">
-                    <p class="phone">0978728372</p>
+                    <p class="phone">{{ $setting->contact }}</p>
                 </div>
             </div>
         </div>
@@ -334,33 +334,13 @@
                 <h1>Frequently Asked Questions</h1>
                 <div class="faq">
                     <div class="collaps">
+                        @foreach($faqs as $faq)
                         <div class="question-one">
-                            <h5 class="faq-one">How easy is it to import the layout?</h5>
-                            <p class="ans-one">
-                                We’ve made it ridiculously easy to share your projects and get real-time feedback on your designs. Clients and colleagues can comment directly on each screen or drop annotations
-                            </p>
+                            <h5 class="faq-one">{{ $faq->question }}</h5>
+                            <p class="ans-one">{{ $faq->answer }}</p>
 
                         </div>
-                        <div class="question-two">
-                            <h5 class="faq-two">Why Analog in the project name?</h5>
-                            <p class="ans-two">
-                                We’ve made it ridiculously easy to share your projects and get real-time feedback on your designs. Clients and colleagues can comment directly on each screen or drop annotations
-                            </p>
-
-                        </div>
-                        <div class="question-three">
-                            <h5 class="faq-three">How is this related to wordpress?</h5>
-                            <p class="ans-three">
-                                We’ve made it ridiculously easy to share your projects and get real-time feedback on your designs. Clients and colleagues can comment directly on each screen or drop annotations
-                            </p>
-
-                        </div>
-                        <div class="question-four">
-                            <h5 class="faq-four">Who are you?</h5>
-                            <p class="ans-four">
-                                We’ve made it ridiculously easy to share your projects and get real-time feedback on your designs. Clients and colleagues can comment directly on each screen or drop annotations
-                            </p>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -405,9 +385,9 @@
         </div>
         <div class="row">
             <div class="col-md-7 col-sm-7 col-12">
-                <h5>Address: ABC</h5>
-                <h5>Email: email@gmail.com</h5>
-                <h5>Phone: 01889378273</h5>
+                <h5>Address: {{ $setting->address }}</h5>
+                <h5>Email: {{ $setting->email }}</h5>
+                <h5>Phone: {{ $setting->contact }}</h5>
             </div>
             <div class="col-md-5 col-sm-5 col-12">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.7301404954824!2d90.35761351445596!3d23.757000794442224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf5964403afb%3A0x543e35446de9ef70!2sBajaj%20Collection!5e0!3m2!1sen!2sbd!4v1578929693605!5m2!1sen!2sbd"

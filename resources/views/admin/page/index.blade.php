@@ -1,7 +1,7 @@
-@extends('layout.admin.admin') @section('title','Page') @section('content')
+@extends('layout.admin.admin') @section('title','FAQ') @section('content')
 <div class="content-wrapper">
 
-    <!-- Content Header (Page header) -->
+    <!-- Content Header (Faq header) -->
     <section class="content-header">
         @if(Session::has('success'))
         <p class="alert alert-success message">{{ Session::get('success') }}</p>
@@ -12,12 +12,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Page List</h1>
+                    <h1>FAQ List</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Page List</li>
+                        <li class="breadcrumb-item active">FAQ List</li>
                     </ol>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Page Title</th>
-                                            <th>Page Description</th>
+                                            <th>Faq Title</th>
+                                            <th>Faq Description</th>
                                             <th>Created On</th>
                                             <th>Last Modified</th>
                                             <th>Action</th>
