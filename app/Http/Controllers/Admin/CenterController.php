@@ -5,16 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Center;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Session;
 
 class CenterController extends Controller
 {
     public function index()
     {
         $data =   [
-            'centers' => Center::all()
+            'centers' => Center::orderBy('id', 'asc')->get()
 
         ];
-        return $data['centers'];
+
 
         return view('admin.center.index')->with($data);
     }
@@ -29,8 +30,10 @@ class CenterController extends Controller
     public function store(Request $request)
     {
         $center = new Center;
-        $center->question = $request->question;
-        $center->answer = $request->answer;
+        $center->name = $request->name;
+        $center->location = $request->location;
+        $center->phone = $request->phone;
+        $center->email = $request->email;
         if ($center->save()) {
             Session::flash('success', 'Center saved successful');
             return redirect(route('admin.center.index'));
@@ -44,7 +47,7 @@ class CenterController extends Controller
     public function edit(Center $center)
     {
         $data =   [
-            'faq' => $center
+            'center' => $center
 
         ];
         return view('admin.center.edit')->with($data);
@@ -53,10 +56,10 @@ class CenterController extends Controller
 
     public function update(Request $request, Center $center)
     {
-        // return $request->all();
-        $center->question = $request->question;
-        $center->answer = $request->answer;
-        $center->updated_at = now();
+        $center->name = $request->name;
+        $center->location = $request->location;
+        $center->phone = $request->phone;
+        $center->email = $request->email;
 
         if ($center->save()) {
             Session::flash('success', 'Center updated successful');

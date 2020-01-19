@@ -14,7 +14,6 @@ class InvoiceController extends Controller
     {
         $data =   [
             'invoices' => Invoice::with('package')->orderBy('id', 'desc')->get()
-
         ];
 
         return view('admin.invoice.index')->with($data);

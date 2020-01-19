@@ -25,7 +25,7 @@
                                 <a class="nav-link" href="#sub">Subscription</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#review">Reviewss</a>
+                                <a class="nav-link" href="#review">Reviews</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#q&a">Q&A</a>

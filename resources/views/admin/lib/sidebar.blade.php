@@ -9,11 +9,6 @@
             <li>
                 <a href="{{ url('/') }}" target="_blank"><i class="fa fa-globe fa-fw"></i> Visit Site</a>
             </li>
-
-
-            <li>
-                <a href="#"><i class="fa fa-sticky-note fa-fw"></i> Test</a>
-            </li>
             <li>
                 <a href="#"><i class="fa fa-list fa-fw"></i> Claim Request<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">

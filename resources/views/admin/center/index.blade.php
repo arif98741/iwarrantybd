@@ -52,6 +52,7 @@
                                             <th>Phone</th>
                                             <th>Email</th>
                                             <th>Registered On</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,9 +61,20 @@
 
                                             <td>{{ ++$key }}</td>
                                             <td>{{ $center->name }}</td>
-                                            <td>{{ $center->mobile }}</td>
-                                            <td>{{ $center->address }}</td>
+                                            <td>{{ $center->location }}</td>
+                                            <td>{{ $center->phone }}</td>
+                                            <td>{{ $center->email }}</td>
                                             <td>{{ date('d-m-Y',strtotime($center->created_at)) }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.center.edit',$center->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                                <a class="" href="{{ route('admin.center.destroy',$center->id) }}" onclick="event.preventDefault();
+                                document.getElementById('vendor-delete-form{{ $center->id }}').submit();">
+                                                    <i class="fa fa-trash btn btn-warning btn-sm"></i>
+                                                </a>
+                                                <form id="vendor-delete-form{{ $center->id }}" action="{{ route('admin.center.destroy',$center->id) }}" method="post" style="display: none;">
+                                                    {{ csrf_field() }} @method('DELETE')
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
 
