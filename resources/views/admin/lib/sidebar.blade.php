@@ -30,14 +30,30 @@
                 <a href="#"><i class="fa fa-list fa-fw"></i> Subscriptions<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="panels-wells.html">Subscription List</a>
+                        <a href="{{ route('admin.subscription','pending') }}">Subscription Pending</a>
                     </li>
+
                     <li>
-                        <a href="buttons.html">Pending Subscription</a>
+                        <a href="{{ route('admin.subscription','approved') }}">Subscription Approved</a>
                     </li>
+
                 </ul>
             </li>
 
+            <li>
+                <a href="#"><i class="fa fa-list fa-fw"></i> Vendor<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ route('admin.vendor.index') }}">Vendor List</a>
+                    </li>
+
+
+                    <li>
+                        <a href="{{ route('admin.vendor.create') }}">Add Vendor</a>
+                    </li>
+
+                </ul>
+            </li>
             <li>
                 <a href="#"><i class="fa fa-users fa-fw"></i> Subscriber<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">

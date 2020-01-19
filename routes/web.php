@@ -4,7 +4,7 @@ Route::get('/', 'Web\HomeController@index')->name('home');
 Route::get('/claim-request', 'Web\ClaimController@index');
 Route::post('/save_claim', 'Web\ClaimController@save_claim');
 Route::get('invoice/{id}', 'Web\HomeController@add_invoice');
-Route::post('invoice_invoice', 'Web\HomeController@save_invoice')->name('save_invoice');
+Route::get('save_subscription', 'Web\HomeController@save_subscription');
 Route::get('view_invoice/{id}', 'Web\HomeController@view_invoice');
 Route::get('/admin', function () {
     return redirect('admin/login');

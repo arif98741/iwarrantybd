@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Package;
 use App\Models\Page;
 use  App\Models\Invoice;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
 use Auth;
+use Carbon\Carbon;
 
 
 
@@ -18,41 +20,31 @@ class HomeController extends Controller
     public function index()
     {
         $data =   [
-            'offer'         => Page::where('title', 'offer')->first(),
-            'how_it_work'   => Page::where('title', 'how_it_work')->first(),
-            'standard'      => Package::where('title', 'STANDARD')->first(),
-            'business'      => Package::where('title', 'BUSINESS')->first(),
-            'premium'       => Package::where('title', 'PREMIUM')->first(),
+            // 'offer'         => Page::where('title', 'offer')->first(),
+            // 'how_it_work'   => Page::where('title', 'how_it_work')->first(),
+            // 'standard'      => Package::where('title', 'STANDARD')->first(),
+            // 'business'      => Package::where('title', 'BUSINESS')->first(),
+            // 'premium'       => Package::where('title', 'PREMIUM')->first(),
         ];
 
         return view('web.home')->with($data);
     }
 
-    public function add_invoice(Request $request, $id)
+    public function save_subscription()
     {
-        $data =   [
-            'package' => Package::find($id),
-            'offer'         => Page::where('title', 'offer')->first(),
-            'how_it_work'   => Page::where('title', 'how_it_work')->first(),
-            'standard'      => Package::where('title', 'STANDARD')->first(),
-            'business'      => Package::where('title', 'BUSINESS')->first(),
-            'premium'       => Package::where('title', 'PREMIUM')->first(),
-        ];
+        $subscription = new Subscription;
+        $subscription->package_id = Package::orderBy('id')->first()->id;
+        $subscription->subscriber_id = Auth::guard('subscriber')->user()->id;
+        $subscription->created_at = now();
+        $invoice = $subscription->save();
+        $data =  Subscription::orderBy('subscriber_id', 'desc')->where('subscriber_id', Auth::guard('subscriber')->user()->id)->first();
 
-        return view('web.add_invoice')->with($data);
-    }
-
-    public function save_invoice()
-    {
-        $invoicedata = $this->validateRequest();
-        $data['created_at'] = now();
-
-        if ($invoice = Invoice::create($invoicedata)) {
-            Session::flash('success', 'Invoice Added successfully!');
-            return redirect('view_invoice/' . $invoice->id);
+        if ($invoice = $subscription->save()) {
+            Session::flash('success', 'Your subscription received successfully!');
+            return redirect('view_invoice/' . $data->id);
         } else {
-            Session::flash('error', 'Invoice Add Failed');
-            return redirect('invoice/' . $invoicedata['package_id']);
+            Session::flash('error', 'Subscription add failed. Unknown error!');
+            return redirect()->back();
         }
     }
 
@@ -60,13 +52,18 @@ class HomeController extends Controller
     public function view_invoice($id)
     {
         $data =   [
-            'invoice'       => Invoice::with('package')->where('id', $id)->first(),
-            'offer'         => Page::where('title', 'offer')->first(),
+            'invoice'       => Subscription::with(['package', 'subscriber'])->where([
+                'id' => $id,
+                'subscriber_id' => Auth::guard('subscriber')->user()->id
+
+            ])->first(),
+            /* 'offer'         => Page::where('title', 'offer')->first(),
             'how_it_work'   => Page::where('title', 'how_it_work')->first(),
             'standard'      => Package::where('title', 'STANDARD')->first(),
             'business'      => Package::where('title', 'BUSINESS')->first(),
-            'premium'       => Package::where('title', 'PREMIUM')->first(),
+            'premium'       => Package::where('title', 'PREMIUM')->first(),*/
         ];
+        // return $data['invoice'];
 
         return view('web.view_invoice', $data);
     }

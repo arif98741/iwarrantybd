@@ -2,9 +2,12 @@
 Route::namespace('Admin')->group(function () {
     Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
     Route::resource('subscriber', 'SubscriberController')->only(['index']);
+    Route::get('subscription/{status}', 'SubscriberController@subscription')->name('subscription');
     Route::get('claim/{status}', 'ClaimController@index')->name('claim');
     Route::get('claim/change_status/{status}/{id}', 'ClaimController@change_status');
-    // Route::resource('subscriber', 'SubscriberController');
+    Route::resource('vendor', 'VendorController')->except(['show']);
+    Route::resource('supply', 'SupplyController');
+
     Route::match(['get', 'post'], 'AdminController@setting');
     //Route::match(['get', 'post'], 'setting', 'AdminController@setting')->name('setting');
     //Route::resource('page', 'PageController')->except(['store', 'show', 'destroy']);

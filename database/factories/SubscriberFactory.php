@@ -5,8 +5,9 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
 
 $factory->define(Subscriber::class, function (Faker $faker) {
+
     return [
-        'name' => 'Ariful Islam',
+        'name' => $faker->firstName . ' ' . $faker->lastName,
         'email' => 'abc' . rand(1, 100) . '@gmail.com',
         'password' => Hash::make('123'),
         'address' => $faker->address,
