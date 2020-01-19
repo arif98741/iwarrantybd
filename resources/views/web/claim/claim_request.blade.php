@@ -4,7 +4,19 @@
         <div class="row">
             <p class="alert alert-succces text-center">
                 You must have to <a href="{{ url('subscriber/register') }}">create an account</a> to claim a request. @if(Auth::guard('subscriber')->check())
-                <br>You are now logged in <a href="{{ url('subscriber/login') }}">logout</a> @else
+                <br>You are now logged in
+
+                <a href="{{ url('susbcriber/logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    <!-- <i class="fas fa-bars"></i> -->logout
+                </a>
+                <form id="logout-form" action="{{ url('subscriber/logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+
+
+
+                @else
                 <br>If have already account, then <a href="{{ url('subscriber/login') }}">login here</a> @endif
             </p>
             <div class="col-md-12 col-sm-12 col-12">
@@ -42,15 +54,10 @@
                             <div class="form-control-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
                         <div class="form-group">
-                            <label for="exampleInputLocation">Phone Model</label>
-                            <input type="text" name="model" class="form-control" id="exampleInputLocation" aria-describedby="emailHelp"> @error('model')
-                            <div class="form-control-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <!-- <div class="form-group">
                             <label for="exampleInputModel">Phone Model</label><br>
-                            <select name="phone-model">
+                            <select name="model">
                                 <option value="iphone11pro">iPhone 11 Pro</option>
                                 <option value="iphone11prmax">iPhone 11 Pro Max</option>
                                 <option value="iphone11">iPhone 11</option>
@@ -66,8 +73,10 @@
                                 <option value="iPhone6plus">iPhone 6 Plus</option>
                                 <option value="iphone6">iPhone 6s</option>
                                 <option value="iPhonese">iPhone SE</option>
-                            </select>
-                        </div> -->
+                            </select> @error('model')
+                            <div class="form-control-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputImei">IMEI Number</label>
                             <input type="text" name="imei" class="form-control" id="exampleInputImei" aria-describedby="emailHelp"> @error('imei')

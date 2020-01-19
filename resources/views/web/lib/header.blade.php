@@ -25,11 +25,34 @@
                                 <a class="nav-link" href="#sub">Subscription</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#review">Reviews</a>
+                                <a class="nav-link" href="#review">Reviewss</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#q&a">Q&A</a>
                             </li>
+
+                            @if(Auth::guard('subscriber')->check())
+                            <li class="nav-item">
+
+
+                                <a class="nav-link" href="{{ url('susbcriber/logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                    <!-- <i class="fas fa-bars"></i> -->Logout
+                                </a>
+                                <form id="logout-form" action="{{ url('subscriber/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+
+                            @else
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('subscriber/login') }}">Login</a>
+
+                            </li>
+
+                            @endif
+
                         </ul>
                     </div>
                 </nav>

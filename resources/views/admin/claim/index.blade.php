@@ -1,17 +1,17 @@
-@extends('layout.admin.admin') @section('title','Subscriber') @section('content')
+@extends('layout.admin.admin') @section('title',$status) @section('content')
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">Subscriber</h2>
+            <h2 class="page-header">{{ $status }}</h2>
         </div>
     </div>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
         @if(Session::has('success'))
-        <p class="alert alert-success message">{{ Session::get('success') }}</p>
+        <p class="alert alert-success message" id="message">{{ Session::get('success') }}</p>
         @endif @if(Session::has('error'))
-        <p class="alert alert-warning message">{{ Session::get('error') }}</p>
+        <p class="alert alert-warning message" id="message">{{ Session::get('error') }}</p>
         @endif
 
         <div class="container-fluid">
@@ -22,7 +22,7 @@
                 <div class="col-sm-5">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}" style="color: #000 !important;">Home</a></li>
-                        <li class="breadcrumb-item">Subscriber list</li>
+                        <li class="breadcrumb-item">{{ $status }} list</li>
                     </ol>
                 </div>
             </div>
@@ -47,21 +47,31 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Subscriber ID</th>
                                             <th>Name</th>
-                                            <th>Mobile</th>
-                                            <th>Address</th>
-                                            <th>Registered On</th>
+                                            <th>Model</th>
+                                            <th>IMEI</th>
+                                            <th>Problem Pattern</th>
+                                            <th>Recieved on</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($subscribers as $key=> $subscriber)
+                                        @foreach($claims as $key=> $claim)
                                         <tr>
 
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $subscriber->name }}</td>
-                                            <td>{{ $subscriber->mobile }}</td>
-                                            <td>{{ $subscriber->address }}</td>
-                                            <td>{{ date('d-m-Y',strtotime($subscriber->created_at)) }}</td>
+                                            <td>{{ $claim->subscriber->id }}</td>
+                                            <td>{{ $claim->subscriber->name }}</td>
+                                            <td>{{ $claim->model }}</td>
+                                            <td>{{ $claim->imei }}</td>
+                                            <td>{{ $claim->problem_pattern }}</td>
+                                            <td>{{ date('d-m-Y',strtotime($claim->created_at)) }}</td>
+                                            <td>
+                                                @if($claim->status == 0)
+                                                <a href="{{ url('admin/claim/change_status/pending/'.$claim->id) }}" class="btn btn-primary btn-sm">Mark Complete</a> @else
+                                                <a href="{{ url('admin/claim/change_status/complete/'.$claim->id) }}" class="btn btn-warning btn-sm">Mark Incomplete</a> @endif
+                                            </td>
                                         </tr>
                                         @endforeach
 

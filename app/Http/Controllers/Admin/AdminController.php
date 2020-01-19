@@ -4,13 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Company;
-use App\Models\Category;
-use App\Models\Invoice;
-use App\Models\Review;
-use App\Models\Reviewer;
+use App\Models\Subscription;
 use App\Models\Setting;
 use App\Models\Subscriber;
+use App\Models\Claim;
 use Session;
 
 class AdminController extends Controller
@@ -18,9 +15,10 @@ class AdminController extends Controller
     public function dashboard()
     {
         $data = [
-            'total_invoice' => Invoice::all()->count(),
+            'total_subscription' => Subscription::all()->count(),
             'total_subscriber' => Subscriber::all()->count(),
-            'total_pending' => Subscriber::all()->count(),
+            'pending_claim' => Claim::where('status', 0)->count(),
+            'completed_claim' => Claim::where('status', 1)->count(),
         ];
         return view('admin.dashboard')->with($data);
     }
@@ -44,7 +42,6 @@ class AdminController extends Controller
                 return redirect(route('admin.setting'));
             }
         }
-
         $setting = Setting::first();
         return view('admin.setting')->with(compact('setting'));
     }

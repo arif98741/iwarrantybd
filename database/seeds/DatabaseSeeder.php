@@ -8,7 +8,8 @@
     use App\Models\Page;
     use App\Models\Setting;
     use App\Models\Subscriber;
-    use Illuminate\Support\Facades\DB;
+    use App\Models\Subscription;
+
     use Illuminate\Support\Facades\Schema;
 
     class DatabaseSeeder extends Seeder
@@ -20,8 +21,8 @@
             //factory(Page::class, 2)->create();
             factory(Subscriber::class, 3)->create();
             factory(Claim::class, 5)->create();
-            //factory(Package::class, 3)->create();
-            //factory(Invoice::class, 5)->create();
+            factory(Package::class, 1)->create();
+            factory(Subscription::class, 5)->create();
             //factory(Setting::class, 1)->create();
         }
     }

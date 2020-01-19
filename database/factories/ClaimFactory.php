@@ -15,5 +15,6 @@ $factory->define(Claim::class, function (Faker $faker) {
         'details' => $faker->text(100),
         'problem_pattern' => $faker->text(50),
         'more_details' => $faker->text(150),
+        'status' => $faker->randomElement([0, 1])
     ];
 });

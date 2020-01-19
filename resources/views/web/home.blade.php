@@ -211,7 +211,11 @@
                         <h6>1GB Storage</h6>
                         <h6>Notification setting</h6>
                         <h6>Password Protection</h6>
-                        <button type="button" class="btn btn-custom btn-buy-now">BUY NOW</button>
+                        @if(Auth::guard('subscriber')->check())
+                        <a href="{{url('/')}}" style="max-width: 220px; color: #fff;" class="btn btn-custom btn-buy-now">BUY
+                            NOW</a> @else
+                        <a href="{{ url('subscriber/login') }}" class="btn btn-custom btn-buy-now">Login to activate
+                            package</a> @endif
                     </div>
                 </div>
             </div>

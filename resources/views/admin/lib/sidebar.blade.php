@@ -57,6 +57,11 @@
 
                 </ul>
             </li>
+
+
+            <li>
+                <a href="{{ url('admin.settings') }}"><i class="fa fa-edit fa-fw"></i> Setting</a>
+            </li>
         </ul>
     </div>
 </div>

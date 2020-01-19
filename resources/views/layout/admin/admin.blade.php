@@ -66,9 +66,6 @@
                         <li class="divider"></li>
                         <li>
 
-
-
-
                             <a class="nav-link" data-toggle="dropdown" href="{{ url('/admin/logout') }}" onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
                                 <!-- <i class="fas fa-bars"></i> --><i class="fa fa-sign-out fa-fw"></i> Logout
@@ -89,7 +86,6 @@
         </nav>
 
         <div id="page-wrapper">
-
 
             @yield('content')
 
@@ -113,7 +109,13 @@
 
         <!-- Custom Theme JavaScript -->
         <script src="{{ asset('asset/back/dist/js/sb-admin-2.js')}}"></script>
-
+        <script>
+            $(document).ready(function() {
+                setTimeout(function() {
+                    $('#message').slideUp(500);
+                }, 5000);
+            });
+        </script>
 </body>
 
 </html>

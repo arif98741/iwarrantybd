@@ -1,15 +1,15 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-
-use App\Models\Invoice;
+use App\Models\Subscription;
 use App\Models\Package;
+use App\Models\Subscriber;
 use Faker\Generator as Faker;
 
-$factory->define(Invoice::class, function (Faker $faker) {
+$factory->define(Subscription::class, function (Faker $faker) {
     return [
         'name' => $faker->firstName . ' ' . $faker->lastName,
         'package_id' => Package::all()->random(),
+        'subscriber_id' => Subscriber::all()->random(),
         'email' => $faker->safeEmail,
         'contact' => $faker->phoneNumber,
         'comment' => $faker->text(50),

@@ -59,7 +59,6 @@ class HomeController extends Controller
 
     public function view_invoice($id)
     {
-
         $data =   [
             'invoice'       => Invoice::with('package')->where('id', $id)->first(),
             'offer'         => Page::where('title', 'offer')->first(),
