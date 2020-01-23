@@ -1,8 +1,12 @@
-@extends('layout.web.web') @section('title','Homepage') @section('content')
 <section class="social">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
+                <div class="float-right">
+                    <a href="https://twitter.com/iWarrantybd/">
+                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                    </a>
+                </div>
                 <div class="float-right">
                     <a href="https://www.facebook.com/iWarrantyBD/">
                         <i class="fa fa-facebook-official" aria-hidden="true"></i>
@@ -18,10 +22,15 @@
         </div>
     </div>
 </section>
-
+@extends('layout.web.web') @section('title','Homepage') @section('content')
 <!-- offer section start -->
 <section class="offer">
     <div class="container">
+        @if(Session::has('error'))
+        <p class="alert alert-warning message">{{ Session::get('error') }}</p>
+        @endif @if(Session::has('success'))
+        <p class="alert alert-success message">{{ Session::get('success') }}</p>
+        @endif
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                 <h1>Offers</h1>
@@ -46,22 +55,9 @@
                     <div class="col-md-4 col-sm-4 col-12">
                         <div class="row">
                             <div class="col-md-9 col-sm-9 col-12">
-                                <h2 class="align-right">Instant Repair</h2>
+                                <h2 class="align-right">Active Subscriber</h2>
                                 <p class="align-right">
-                                    Our specialists are here for real-time scheduling support for instant repair service within which we can provide one of the highest possible solutions for your Apple device.
-                                </p>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-12">
-                                <div class="how-icon-bg">
-                                    <i class="fa fa-calendar-check-o icons" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-9 col-sm-9 col-12">
-                                <h2 class="align-right">Best Repair Specialists</h2>
-                                <p class="align-right">
-                                    Specialized & efficient expert technicians are available here to deal with any problem regarding your Apple device within the shortest possible time.
+                                    You have to be an active subscriber to get a premium service from iWarrantyBD.com
                                 </p>
                             </div>
                             <div class="col-md-3 col-sm-3 col-12">
@@ -72,14 +68,27 @@
                         </div>
                         <div class="row">
                             <div class="col-md-9 col-sm-9 col-12">
-                                <h2 class="align-right">Fastest Repair Time</h2>
+                                <h2 class="align-right">Claim Your Requirements</h2>
                                 <p class="align-right">
-                                    We are providing the best solution within the lowest possible time keeping in mind the value of your precious time.
+                                    Subscriber’s need to post his claim against the subscription package. iWarrantyBD.com will assess the request and then process the request for the next steps.
                                 </p>
                             </div>
                             <div class="col-md-3 col-sm-3 col-12">
                                 <div class="how-icon-bg">
-                                    <i class="fa fa-clock-o icons" aria-hidden="true"></i>
+                                    <i class="fa fa-file-powerpoint-o icons" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9 col-sm-9 col-12">
+                                <h2 class="align-right">Get Quicker Service</h2>
+                                <p class="align-right">
+                                    We are providing the best solution within the lowest possible period of time keeping in mind the value of the customer’s valuable time.
+                                </p>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-12">
+                                <div class="how-icon-bg">
+                                    <i class="fa fa-calendar-check-o icons" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -87,17 +96,19 @@
                     <div class="col-md-4 col-sm-4 col-12">
                         <img src="{{ asset('asset/front/img/iphone-bg.png')}}" alt="Iphone Image" class="img-fluid">
                     </div>
+
                     <div class="col-md-4 col-sm-4 col-12">
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-12">
                                 <div class="how-icon-bg">
-                                    <i class="fa fa-money icons" aria-hidden="true"></i>
+                                    <i class="fa fa-unlock-alt icons" aria-hidden="true"></i>
                                 </div>
+
                             </div>
                             <div class="col-md-9 col-sm-9 col-12">
-                                <h2 class="align-left">Low Repair Prices</h2>
+                                <h2 class="align-left">iCloud Lock Removal</h2>
                                 <p class="align-left">
-                                    We are assuring you that whatever be the problem with your device our specialized technicians will come up with the best solution that too within the cheapest & affordable price limit.
+                                    iCloud lock is a major problem in Bangladesh iPhone users and we are providing the authentic iCloud lock service. On customer demand having proper documentation we have the ability to unlock iCloud and country lock excluding our subscription fee.
                                 </p>
                             </div>
                         </div>
@@ -106,24 +117,26 @@
                                 <div class="how-icon-bg">
                                     <i class="fa fa-cog icons" aria-hidden="true"></i>
                                 </div>
+
                             </div>
                             <div class="col-md-9 col-sm-9 col-12">
-                                <h2 class="align-left">Special Quarantee</h2>
+                                <h2 class="align-left">Service ensured by Apple expert</h2>
                                 <p class="align-left">
-                                    We are giving a special guarantee offer for your device to come up with the best solution. With our specialized technician team & of course,we will deal with it giving the highest priority.
+                                    All the services are ensured by Apple expert. We will give our 100 % effort on the problems of iPhone. Singapore is our main service point where we send all our iPhone and Customer able to see the status of his phone through iWarrantyBD
                                 </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-12">
                                 <div class="how-icon-bg">
-                                    <i class="fa fa-laptop icons" aria-hidden="true"></i>
+                                    <i class="fa fa-wrench icons" aria-hidden="true"></i>
                                 </div>
+
                             </div>
                             <div class="col-md-9 col-sm-9 col-12">
-                                <h2 class="align-left">Original Spare Parts</h2>
+                                <h2 class="align-left">Original Apple Parts</h2>
                                 <p class="align-left">
-                                    We are giving a special guarantee of repairing or replacing your device with the highest quality original Apple parts for a given length of time.
+                                    We are ensuring a guarantee of repairing or replacing your device with the original Apple parts.
                                 </p>
                             </div>
                         </div>
@@ -144,64 +157,76 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 col-12">
-                <div class="card" style="width: 100%;">
+                <div class="card" style="width: 100%; height:250px;">
                     <div class="card-body">
-                        <h5 class="card-title">Free Diagnostic Checkup</h5>
+                        <img src="{{ asset('asset/front/img/icloud-logo.png')}}" class="img-fluid" style="height: 62px;width: 25%;padding-bottom: 5px;display: block;margin: 0 auto;">
+                        <h5 class="card-title">50GB iCloud Storage</h5>
+                        <hr style="border:1px solid black">
                         <p class="card-text">
-                            We are providing you Free Diagnostic check-up on your Apple Devices. We will check all the problems with your apple device for hardware or software issues and let them know you.
+                            One of the major problems for the iPhone users is storage. iWarrantyBD will provide you 50GB iCloud storage for One year after active your subscription package. And it will cost $12 for a year.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-12">
-                <div class="card" style="width: 100%;">
+                <div class="card" style="width: 100%; height:250px;">
                     <div class="card-body">
-                        <h5 class="card-title">Money Back Guaranty</h5>
+                        <img src="{{ asset('asset/front/img/itunes.png')}}" class="img-fluid" style="height: 62px;width: 25%;padding-bottom: 5px;display: block;margin: 0 auto;">
+                        <h5 class="card-title">iTunes</h5>
+                        <hr style="border:1px solid black">
                         <p class="card-text">
-                            If you are not satisfied with our service, we would like to offer your Money Back Guaranty! without any hassle. We are offering.you 30 Days Money Back Guaranty. so let us know within that time.
+                            iTunes is one of the core features of the iPhone. Keeping it in mind, iWarrantyBD will provide you iTunes for One year with is cost around $120 for a year.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-12">
-                <div class="card" style="width: 100%;">
+                <div class="card" style="width: 100%; height:250px;">
                     <div class="card-body">
-                        <h5 class="card-title">Expert Technicians</h5>
+                        <img src="{{ asset('asset/front/img/appletv.jpg')}}" class="img-fluid" style="height: 62px;width: 25%;padding-bottom: 5px;display: block;margin: 0 auto;">
+                        <h5 class="card-title">Apple TV</h5>
+                        <hr style="border:1px solid black">
                         <p class="card-text">
-                            We have built a Expert Team of iPhone Repair Specialist or Apple Device Repair Expert. They can solve those issues you are facing with your Apple Devices. So no need to worry anymore !!!
+                            Who doesn't love watching TV? iWarrantyBD will provide you Apple TV for One year with is cost around $60 for a year.
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="row choose-bottom">
-                <div class="col-md-4 col-sm-4 col-12">
-                    <div class="card" style="width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title">Friendly Support</h5>
-                            <p class="card-text">
-                                We are more focusing on After Sales & Service. We want 100% customer satisfaction. So, Our friendly support team is always ready to give you support with various platforms.
-                            </p>
-                        </div>
+        </div>
+        <div class="row choose-bottom">
+            <div class="col-md-4 col-sm-4 col-12">
+                <div class="card" style="width: 100%;height:250px;">
+                    <div class="card-body">
+                        <img src="{{ asset('asset/front/img/premium.png')}}" class="img-fluid" style="height: 62px;width: 25%;padding-bottom: 5px;display: block;margin: 0 auto;">
+                        <h5 class="card-title">Premium Service</h5>
+                        <hr style="border:1px solid black">
+                        <p class="card-text">
+                            We are more focusing to provide the premium service to our customers. And we believe that, all iPhone users are expecting a premium service for it’s device.
+                        </p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-12">
-                    <div class="card" style="width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title">Quick Repair</h5>
-                            <p class="card-text">
-                                Nowadays your Apple Device is an essential device for daily life. We know how much important is it. So, Our technicians are always trying to repair your device with the best care and quick repair.
-                            </p>
-                        </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-12">
+                <div class="card" style="width: 100%;height:250px;">
+                    <div class="card-body">
+                        <img src="{{ asset('asset/front/img/savetime.png')}}" class="img-fluid" style="height: 62px;width: 25%;padding-bottom: 5px;display: block;margin: 0 auto;">
+                        <h5 class="card-title">Save time and be hassle free</h5>
+                        <hr style="border:1px solid black">
+                        <p class="card-text">
+                            Time is money and we are deeply focused to save our customer’s time & it will give you be hassle free.
+                        </p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-12">
-                    <div class="card" style="width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title">Advanced Service Lab</h5>
-                            <p class="card-text">
-                                We have Advanced Labs with Advanced Technologies that needed to repair your Apple devices perfectly. We always try to use advanced & developed technologies.
-                            </p>
-                        </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-12">
+                <div class="card" style="width: 100%;height:250px;">
+                    <div class="card-body">
+                        <img src="{{ asset('asset/front/img/friendly.png')}}" class="img-fluid" style="height: 62px;width: 25%;padding-bottom: 5px;display: block;margin: 0 auto;">
+                        <h5 class="card-title">Friendly Support</h5>
+                        <hr style="border:1px solid black">
+                        <p class="card-text">
+                            We are focusing more on Premium Service and 100% customer satisfaction. So, our team is always ready to give you friendly support.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -267,48 +292,33 @@
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
+                        @foreach($reviews as $reviewid => $review) @if($reviewid == 1)
                         <div class="carousel-item active">
                             <div class="row">
                                 <div class="col-md-4 col-sm-4 col-4">
                                     <img src="{{ asset('asset/front/img/user1.png')}}" class="img-fluid user-review-image">
                                 </div>
                                 <div class="col-md-8 col-sm-8 col-8">
-                                    <h5>Name</h5>
-                                    <h6>Designation</h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, std do eiusmod tempor incididunt ut labore tet dolore magna aliqua.
-                                    </p>
+                                    <h5>{{ $review->name }}</h5>
+                                    <h6>{{ $review->designation }}</h6>
+                                    <p>{{ $review->details }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
+                        @else
+                        <div class="carousel-item ">
                             <div class="row">
                                 <div class="col-md-4 col-sm-4 col-4">
-                                    <img src="{{ asset('asset/front/img/user2.png')}}" class="img-fluid user-review-image">
+                                    <img src="{{ asset('asset/front/img/user1.png')}}" class="img-fluid user-review-image">
                                 </div>
                                 <div class="col-md-8 col-sm-8 col-8">
-                                    <h5>ArifuL islam</h5>
-                                    <h6>Designation</h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, std do eiusmod tempor incididunt ut labore tet dolore magna aliqua.
-                                    </p>
+                                    <h5>{{ $review->name }}</h5>
+                                    <h6>{{ $review->designation }}</h6>
+                                    <p>{{ $review->details }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-4 col-sm-4 col-4">
-                                    <img src="{{ asset('asset/front/img/user3.png')}}" class="img-fluid user-review-image">
-                                </div>
-                                <div class="col-md-8 col-sm-8 col-8">
-                                    <h5>Name</h5>
-                                    <h6>Designation</h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, std do eiusmod tempor incididunt ut labore tet dolore magna aliqua.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        @endif @endforeach
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -319,6 +329,37 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-12 col-sm-12 col-12">
+                <a href="#review-form-button" id="review-form-button">
+                    Give your review
+                </a>
+                <form action="{{ url('save_review') }}" method="post" id="review-form" style="display: none;">
+                    @csrf @method('post')
+                    <div class="form-group">
+                        <label for>Enter your name</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for>Enter designation</label>
+                        <input type="text" name="designation" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for>Write Review</label>
+                        <textarea name="details" id cols="30" rows="3" class="form-control" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+
             </div>
         </div>
     </div>
@@ -332,17 +373,21 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                 <h1>Frequently Asked Questions</h1>
-                <div class="faq">
-                    <div class="collaps">
-                        @foreach($faqs as $faq)
-                        <div class="question-one">
-                            <h5 class="faq-one">{{ $faq->question }}</h5>
-                            <p class="ans-one">{{ $faq->answer }}</p>
+                @foreach($faqs as $key => $faq)
+                <button class style="display: block; width: 100%; text-align: left; border: none; outline: none; height: 50px;" type="button" data-toggle="collapse" data-target="#collapseExample{{ $key }}" aria-expanded="false" aria-controls="collapseExample{{ $key }}">
+                    <i class="fa fa-angle-right fa-1x"></i>
+                    &nbsp;{{ $faq->question }}
+                </button>
 
-                        </div>
-                        @endforeach
-                    </div>
+                <div class="collapse" id="collapseExample{{ $key }}">
+
+                    <div class="card card-body bg-white">{{ $faq->answer }}</div>
                 </div>
+                @endforeach @if($faq_count > 7)
+                <a href="{{ url('faq') }}" class="btn btn-info mt-3">
+                    See All
+                </a> @endif
+
 
             </div>
         </div>
@@ -359,11 +404,12 @@
         </div>
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
-                <form class="ques-form">
+                <form class="ques-form" action="{{ url('save_question') }}" method="post">
+                    @csrf @method('post')
                     <div class="form-group">
                         <label for="exampleInputQuestion">Your Question</label>
                         <br>
-                        <textarea class="form-control"></textarea>
+                        <textarea name="question_data" class="form-control"></textarea>
                     </div>
                     <button type="submit" class="btn btn-custom ques-btn">
                         Submit
@@ -376,7 +422,7 @@
 <!-- Post Your Question end -->
 
 <!-- Contact Start -->
-<section class="contact">
+<section class="contact" style="background-color:#e8e6e6;">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
@@ -384,16 +430,76 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-7 col-sm-7 col-12">
+            <div class="col-md-6 col-sm-6 col-12">
+                <ul style="list-style: none;">
+                    <li>
+                        <a href="#home" style="color: black">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#home" style="color: black">
+                            Post Your Claim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sub" style="color: black">
+                            Subscription
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#q&a" style="color: black">
+                            Q & A
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#review" style="color: black">
+                            Reviews
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-sm-6 col-12">
                 <h5>Address: {{ $setting->address }}</h5>
                 <h5>Email: {{ $setting->email }}</h5>
                 <h5>Phone: {{ $setting->contact }}</h5>
             </div>
-            <div class="col-md-5 col-sm-5 col-12">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.7301404954824!2d90.35761351445596!3d23.757000794442224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf5964403afb%3A0x543e35446de9ef70!2sBajaj%20Collection!5e0!3m2!1sen!2sbd!4v1578929693605!5m2!1sen!2sbd"
-                    width="100%" height="220" frameborder="0" style="border:0;" allowfullscreen></iframe>
-            </div>
         </div>
     </div>
 </section>
+
+<footer style="border-top: 1px solid #989898;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">
+                <p style="text-align: center;">© 2020 Iwarranty BD</p>
+                <p style="text-align: center; margin: 0px;" target="_blank">Developed By - <a href="https://facebook.com/arifulislammmc007" class="btn-link">Ariful Islam</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js">
+</script>
+<script>
+    $(document).ready(function() {
+        /* $('#faq-load-more-btn').click(function() {
+             $('.faq_load_more_section').css('display', 'block');
+         });
+*/
+        var rfb = 0;
+        $('#review-form-button').click(function() {
+            $(this).css('display', 'none');
+            if (rfb == 0) {
+
+                $('#review-form').css('display', 'block');
+                $('#review-form').children().css('display', 'block');
+                rfb = 1;
+            } else {
+                $('#review-form').css('display', 'none');
+                rfb = 0;
+            }
+        });
+
+    });
+</script>
 @endsection

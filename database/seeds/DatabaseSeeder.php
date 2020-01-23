@@ -11,7 +11,8 @@ use App\Models\Package;
 use App\Models\Setting;
 use App\Models\Subscriber;
 use App\Models\Subscription;
-
+use App\Models\Question;
+use App\Models\Review;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
@@ -29,6 +30,8 @@ class DatabaseSeeder extends Seeder
         factory(Vendor::class, 3)->create();
         factory(Center::class, 3)->create();
         factory(Setting::class, 1)->create();
-        factory(Faq::class, 1)->create();
+        factory(Faq::class, 10)->create();
+        factory(Question::class, 5)->create();
+        factory(Review::class, 5)->create();
     }
 }

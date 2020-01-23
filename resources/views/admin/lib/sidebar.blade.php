@@ -90,10 +90,30 @@
                 </ul>
             </li>
 
+            <li>
+                <a href="#"><i class="fa fa-list fa-fw"></i> Review<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ route('admin.review.index') }}">Review List</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.review.create') }}">Add Review</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li>
+                <a href="{{ route('admin.question.index') }}"><i class="fa fa-question-circle fa-fw"></i> Question</a>
+            </li>
 
             <li>
                 <a href="{{ route('admin.setting') }}"><i class="fa fa-cog fa-fw"></i> Setting</a>
             </li>
+
+
         </ul>
     </div>
 </div>

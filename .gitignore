@@ -13,3 +13,4 @@ yarn-error.log
 *.zip
 *.tmp
 *.iml
+.vscode

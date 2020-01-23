@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateClaimsTable extends Migration
 {
-   
+
     public function up()
     {
         Schema::create('claims', function (Blueprint $table) {
@@ -20,6 +20,7 @@ class CreateClaimsTable extends Migration
             $table->string('details');
             $table->string('problem_pattern');
             $table->string('more_details')->nullable();
+            $table->string('image')->nullable();
             $table->tinyinteger('status')->default(0); //pending = 0, completed = 1
             $table->timestamps();
             $table->foreign('subscriber_id')->references('id')->on('subscribers')->onDelete('cascade')->onUpdate('cascade');

@@ -1,3 +1,8 @@
 Here is the cPanel credentials:
 http://www.iwarrantybd.com/cpanel
 iwarntbdayr / rGM]dem!a0U{@m
+
+db :
+user: iwarntbdayr_iwarranty
+database: iwarntbdayr_maindb
+pass: sdlj^%534DJLF323

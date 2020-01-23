@@ -66,4 +66,16 @@ class FaqController extends Controller
             return redirect(route('admin.faq.index'));
         }
     }
+
+
+    public function destroy(Faq $faq)
+    {
+        if ($faq->delete()) {
+            Session::flash('success', 'Faq deleted successful');
+            return redirect(route('admin.faq.index'));
+        } else {
+            Session::flash('success', 'Faq delete failed');
+            return redirect(route('admin.faq.index'));
+        }
+    }
 }

@@ -22,7 +22,7 @@ class ClaimController extends Controller
                 ->orderBy('id', 'desc')->get(),
             'status' => $title
         ];
-        //return $data;
+        return $data['status']; 
 
         return view('admin.claim.index')->with($data);
     }
@@ -41,6 +41,20 @@ class ClaimController extends Controller
             $claim->save();
             Session::flash('success', 'Claim has successfully sent to pending list');
             return redirect('/admin/claim/1');
+        }
+    }
+
+
+    public function cancel($id)
+    {
+        $claim = Claim::find($id);
+
+        if ($claim->delete()) {
+            Session::flash('success', 'Claim has successfully canceled');
+            return redirect('/admin/claim/0');
+        } else {
+            Session::flash('error', 'Unexpected error Try again later');
+            return redirect('/admin/claim/0');
         }
     }
 }

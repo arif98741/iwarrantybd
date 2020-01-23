@@ -14,6 +14,7 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
+
         $data = [
             'total_subscription' => Subscription::all()->count(),
             'total_subscriber' => Subscriber::all()->count(),

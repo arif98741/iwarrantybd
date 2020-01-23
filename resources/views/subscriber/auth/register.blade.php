@@ -5,7 +5,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading bg-success" style="padding-bottom: 4px;">Register to IwarrantyBD</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/subscriber/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/subscriber/register') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

@@ -39,7 +39,10 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title text-center"><i class="fa fa-user-secret"></i> Admin Login</h3>
+                        <small class="text-center">
+                            Please enter your login details to access dashboard.
+                        </small>
                     </div>
                     <div class="panel-body">
                         <form role="form" method="POST" action="{{ url('/admin/login') }}">
@@ -61,6 +64,7 @@
                                 <!-- <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a> -->
                             </fieldset>
                         </form>
+                        <p style="margin-top: 10px;" class="text-center">Developed by: <a target="_blank" href="https://facebook.com/arifulislammmc007" class="btn-link">Ariful Islam</a t></p>
                     </div>
                 </div>
             </div>

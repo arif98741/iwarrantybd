@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Faq::class, function (Faker $faker) {
     return [
-        'question' => $faker->text(100),
-        'answer' => $faker->text(100)
+        'question' => $faker->text(50),
+        'answer' => $faker->text(50)
     ];
 });

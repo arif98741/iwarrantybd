@@ -1,6 +1,6 @@
 <!--Header section start-->
-<header class="home">
-    <div class="container">
+<header class="home" id="home">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                 <nav class="navbar navbar-expand-lg">
@@ -15,21 +15,21 @@
                                 <a class="nav-link" href="{{ url('/') }}">Home <span
                                         class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/claim-request') }}">Post your claim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#product">Product</a>
-                            </li>
-                            <li class="nav-item">
+                                                        <li class="nav-item">
                                 <a class="nav-link" href="#sub">Subscription</a>
                             </li>
-                            <li class="nav-item">
+                             <li class="nav-item">
                                 <a class="nav-link" href="#review">Reviews</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#q&a">Q&A</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/claim-request') }}">Post your claim</a>
+                            </li>
+
+                           
+                            
 
                             @if(Auth::guard('subscriber')->check())
                             <li class="nav-item">

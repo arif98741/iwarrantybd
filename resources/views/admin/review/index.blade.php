@@ -42,41 +42,52 @@
                                     <thead>
                                         <tr>
                                             <th>Serial</th>
-                                            <th>Title</th>
-                                            <th>Review By </th>
-                                            <th>Company</th>
-                                            <th>Date</th>
+                                            <th>Name</th>
+                                            <th>Designation</th>
+                                            <th>Details</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                        @foreach($reviews_data as $key=>$review)
+                                        @foreach($reviews as $key=>$review)
                                         <tr>
 
-                                            <td>{{ ++$key }}</td>
-                                            <td>{{ $review->title }}</td>
-                                            <td>{{ $review->reviewer->fullname }}</td>
-                                            <td>{{ $review->company->company_name }}</td>
-                                            <td>{{ date('h:i:s, d-m-Y',strtotime($review->created_at)) }}</td>
-                                            <td> @if($review->status == 0) Approved @endif @if($review->status == 1) Denied @endif
+                                            <td class="text-center">{{ ++$key }}</td>
+                                            <td>{{ $review->name }}</td>
+                                            <td>{{ $review->designation }}</td>
+                                            <td>{{ $review->details }}</td>
 
-
+                                            <td class="text-center">
+                                                @if($review->status == 0) <span style="color: grenn;"><strong>active</strong></span> @else <span style="color: red;"><strong>inactive</strong></span>@endif
                                             </td>
                                             <td>
+
                                                 @if($review->status == 0)
-                                                <a href="{{ url('admin/review/deny/'.$review->id) }}"><i class="fa fa-times btn btn-warning"></i></a> @endif @if($review->status == 1)
-                                                <a href="{{ url('admin/review/approve/'.$review->id) }}"><i class="fa fa-check btn btn-success"></i></a> @endif
+                                                <a href="{{ url('admin/review/change_review_status/'.$review->status.'/'.$review->id) }}" title="change to inactive"><i
+                                                        class="fa fa-times btn btn-success"></i></a> @else
+
+                                                <a href="{{ url('admin/review/change_review_status/'.$review->status.'/'.$review->id) }}" title="change to active"><i
+                                                        class="fa fa-check btn btn-primary"></i></a> @endif
 
 
+                                                <a class="" href="{{ route('admin.review.destroy',$review->id) }}" onclick="event.preventDefault();
+                                                            document.getElementById('vendor-delete-form{{ $review->id }}').submit();">
+                                                    <i class="fa fa-trash btn btn-danger btn-sm"></i>
+                                                </a>
 
+
+                                                <form id="vendor-delete-form{{ $review->id }}" action="{{ route('admin.review.destroy',$review->id) }}" method="post" style="display: none;">
+                                                    {{ csrf_field() }} @method('DELETE')
+                                                </form>
                                             </td>
-
                                         </tr>
-                                        @endforeach
 
-                                        </tfoot>
+                                        @endforeach
+                                    </tbody>
+
+                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

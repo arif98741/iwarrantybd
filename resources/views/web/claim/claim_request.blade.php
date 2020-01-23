@@ -2,23 +2,25 @@
 <section>
     <div class="container">
         <div class="row">
-            <p class="alert alert-succces text-center">
-                You must have to <a href="{{ url('subscriber/register') }}">create an account</a> to claim a request. @if(Auth::guard('subscriber')->check())
-                <br>You are now logged in
+            <div class="col-md-12">
+                <p class="alert alert-succces text-center">
+                    You must have to <a href="{{ url('subscriber/register') }}">create an account</a> to claim a request. @if(Auth::guard('subscriber')->check())
+                    <br>You are now logged in
 
-                <a href="{{ url('susbcriber/logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                    <!-- <i class="fas fa-bars"></i> -->logout
-                </a>
-                <form id="logout-form" action="{{ url('subscriber/logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
+                    <a href="{{ url('susbcriber/logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        <!-- <i class="fas fa-bars"></i> -->logout
+                    </a>
+                    <form id="logout-form" action="{{ url('subscriber/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
 
 
 
-                @else
-                <br>If have already account, then <a href="{{ url('subscriber/login') }}">login here</a> @endif
-            </p>
+                    @else
+                    <br>If have already account, then <a href="{{ url('subscriber/login') }}">login here</a> @endif
+                </p>
+            </div>
             <div class="col-md-12 col-sm-12 col-12">
                 @if(Session::has('success'))
                 <p class="alert alert-success">
@@ -34,7 +36,7 @@
             <div class="col-md-12 col-sm-12 col-12">
                 <div class="claim-section">
 
-                    <form class="post-claim-form" action="{{ url('save_claim') }}" method="post">
+                    <form class="post-claim-form" action="{{ url('save_claim') }}" method="post" enctype="multipart/form-data">
                         @csrf @method('post')
                         <div class="form-group">
                             <label for="exampleInputName1">Name</label>
@@ -112,6 +114,16 @@
                             <div class="form-control-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputPhoneDetails">Upload Picture</label>
+                            <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg" class="form-control"> @error('more_details')
+                            <div class="form-control-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
                         @if(Auth::guard('subscriber')->check())
                         <button type="submit" class="btn btn-primary post-claim-btn">Submit</button> @endif
                     </form>

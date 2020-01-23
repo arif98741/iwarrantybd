@@ -5,11 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateSubscribersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('subscribers', function (Blueprint $table) {
@@ -23,7 +19,6 @@ class CreateSubscribersTable extends Migration
             $table->timestamps();
         });
     }
-
 
     public function down()
     {

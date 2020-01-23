@@ -2,10 +2,13 @@
 
 Route::get('/', 'Web\HomeController@index')->name('home');
 Route::get('/claim-request', 'Web\ClaimController@index');
+Route::get('/faq', 'Web\HomeController@faq');
 Route::post('/save_claim', 'Web\ClaimController@save_claim');
 Route::get('invoice/{id}', 'Web\HomeController@add_invoice');
 Route::get('save_subscription', 'Web\HomeController@save_subscription');
 Route::get('view_invoice/{id}', 'Web\HomeController@view_invoice');
+Route::post('save_question', 'Web\HomeController@save_question');
+Route::post('save_review', 'Web\HomeController@save_review');
 Route::get('/admin', function () {
     return redirect('admin/login');
 });

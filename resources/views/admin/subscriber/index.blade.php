@@ -51,6 +51,7 @@
                                             <th>Mobile</th>
                                             <th>Address</th>
                                             <th>Registered On</th>
+                                            <th>View</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -62,10 +63,12 @@
                                             <td>{{ $subscriber->mobile }}</td>
                                             <td>{{ $subscriber->address }}</td>
                                             <td>{{ date('d-m-Y',strtotime($subscriber->created_at)) }}</td>
+                                            <td><a href="{{ route('admin.subscriber.show',$subscriber->id) }}" class="btn btn-primary" style="color: #fff;"><i
+                                                        class="fa fa-eye"></i></a></td>
                                         </tr>
                                         @endforeach
+                                    </tbody>
 
-                                        </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

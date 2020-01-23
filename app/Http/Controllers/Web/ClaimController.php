@@ -20,11 +20,29 @@ class ClaimController extends Controller
 
     public function save_Claim(Request $request)
     {
+        $claimData = $this->validateRequest();
+        $claimData['image'] = '';
+        $claimData['subscriber_id'] = Auth::guard('subscriber')->user()->id;
 
 
-        $categoryData = $this->validateRequest();
-        $categoryData['subscriber_id'] = Auth::guard('subscriber')->user()->id;
-        if (Claim::create($categoryData)) {
+
+        if ($claim = Claim::create($claimData)) {
+
+            if (!empty($request->file('image'))) {
+
+
+                $filenameWithExt = $request->file('image')->getClientOriginalName();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $fileNameToStore = 'claim' . '_' . time() . '.' . $extension;
+                $path = $request->file('image')->storeAs('public/uploads/claim', $fileNameToStore);
+                $claimData['image'] =  str_replace("public/uploads/claim/", '', $path);
+                $updateimage = Claim::find($claim->id);
+                $updateimage->image = $claimData['image'];
+                $updateimage->save();
+            }
+
+
             Session::flash('success', 'Your claim has received successfully! You will be notified soon.');
             return redirect('claim-request');
         } else {
@@ -44,6 +62,7 @@ class ClaimController extends Controller
             'details' => 'required',
             'problem_pattern' => 'required',
             'more_details' => 'sometimes',
+            'image' => 'sometimes',
         ]);
     }
 }

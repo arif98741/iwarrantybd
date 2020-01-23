@@ -63,6 +63,11 @@ section{
     padding-left: 10px;
     font-size: 20px;
 }
+.fa-twitter-square{
+	color: #3578E5;
+    padding-left: 10px;
+    font-size: 20px;
+}
 header{
 	background: url(../img/banner-bg.webp);
 	background-size: cover; 
@@ -73,6 +78,9 @@ header{
 }
 .fa-bars{
 	color: #fbf2f2;
+}
+.navbar{
+	padding-bottom: 0px;
 }
 .nav-link{
 	color: #ffffff !important;
@@ -89,6 +97,7 @@ header{
 }
 hr{
 	border: 1px solid #989898;
+	margin-top: 0px;
 }
 .tag-line h1{
 	padding-top: 100px;
@@ -118,6 +127,10 @@ hr{
     border-radius: 100%;
     display: block;
     margin: 0 auto;
+}
+.card:hover{
+	cursor: pointer;
+	background-color: #989898;
 }
 .icons{
 	font-size: 25px;
@@ -241,8 +254,7 @@ hr{
 
 /*New css*/
 .claim-section{
-	background: url(../img/post-claim-bg.jpg) no-repeat;
-	background-size: cover;
+	background-color: #989898;
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
@@ -283,12 +295,17 @@ body{
 }
 .go-top{
 	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	background-color: #989898;
-	width: 20px;
-	height: 20px;
-	color: #eaeaea;
-	border-radius: 100%;
-	padding-left: 3px;
+    bottom: 70px;
+    right: 70px;
+    background-color: #989898;
+    width: 56px;
+    height: 56px;
+    color: #eaeaea;
+    border-radius: 100%;
+    padding-left: 8px;
+    font-size: 41px;
+    opacity: 0.1;
+}
+.go-top:hover{
+    opacity: 1;
 }

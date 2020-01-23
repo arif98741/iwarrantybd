@@ -75,8 +75,9 @@
                                             </td>
                                         </tr>
                                         @endforeach
+                                    </tbody>
 
-                                        </tfoot>
+                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

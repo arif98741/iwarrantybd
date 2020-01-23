@@ -4,32 +4,42 @@ namespace App\Http\Controllers\Web;
 
 use Auth;
 use Session;
-use Carbon\Carbon;
-use App\Models\Page;
 use App\Models\Package;
 use App\Models\Setting;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
+use App\Models\Question;
+use App\Models\Review;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $data =   [
-            // 'offer'         => Page::where('title', 'offer')->first(),
-            // 'how_it_work'   => Page::where('title', 'how_it_work')->first(),
-            // 'standard'      => Package::where('title', 'STANDARD')->first(),
-            // 'business'      => Package::where('title', 'BUSINESS')->first(),
-            // 'premium'       => Package::where('title', 'PREMIUM')->first(),
             'setting'          => Setting::first(),
-            'faqs'              => Faq::orderBy('id', 'desc')->get(),
+            'faqs'             => Faq::orderBy('id', 'desc')->limit(7)->get(),
+            'faq_count'        => Faq::count(),
+            'offset_faqs'      => Faq::skip(7)->take(50)->orderBy('id', 'desc')->get(),
+            'reviews'           => Review::where('status', 1)->get(),
         ];
 
         return view('web.home')->with($data);
     }
+
+    public function faq()
+    {
+        $data =   [
+            'setting'    => Setting::first(),
+            'faqs'      => Faq::orderBy('id', 'desc')->get(),
+        ];
+
+        return view('web.faq')->with($data);
+    }
+
+
+
 
     public function save_subscription()
     {
@@ -56,13 +66,7 @@ class HomeController extends Controller
             'invoice'       => Subscription::with(['package', 'subscriber'])->where([
                 'id' => $id,
                 'subscriber_id' => Auth::guard('subscriber')->user()->id
-
             ])->first(),
-            /* 'offer'         => Page::where('title', 'offer')->first(),
-            'how_it_work'   => Page::where('title', 'how_it_work')->first(),
-            'standard'      => Package::where('title', 'STANDARD')->first(),
-            'business'      => Package::where('title', 'BUSINESS')->first(),
-            'premium'       => Package::where('title', 'PREMIUM')->first(),*/
         ];
         // return $data['invoice'];
 
@@ -76,6 +80,37 @@ class HomeController extends Controller
 
         return view('web.contact')->with($data);
     }
+
+
+    public function save_question(Request $request)
+    {
+        $question = new Question;
+        $question->question_data =  $request->question_data;
+        if ($question->save()) {
+            // Session::flash('success', 'Your question has successfully saved!');
+            return redirect('/');
+        } else {
+            // Session::flash('error', 'Failed to post question. Try again!');
+            return redirect()->back();
+        }
+    }
+
+
+    public function save_review(Request $request)
+    {
+        $review = new Review;
+        $review->name =  $request->name;
+        $review->designation =  $request->designation;
+        $review->details =  $request->details;
+        $review->created_at =  now();
+        $review->updated_at =  now();
+        if ($review->save()) {
+            return redirect('/');
+        } else {
+            return redirect()->back();
+        }
+    }
+
 
     private function validateRequest()
     {
