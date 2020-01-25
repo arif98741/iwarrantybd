@@ -1,4 +1,4 @@
-@extends('layout.admin.admin') @section('title','Faq') @section('content')
+@extends('layout.admin.admin') @section('title','Question') @section('content')
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -46,6 +46,7 @@
                                             <th>Question</th>
                                             <th>Created At</th>
                                             <th>Action</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,7 +56,17 @@
                                             <td>{{ ++$key }}</td>
                                             <td>{{ $question->question_data }}</td>
                                             <td>{{ date('d-m-Y',strtotime($question->created_at)) }}</td>
+                                            <td>
 
+
+                                                <a class="" href="{{ route('admin.question.destroy',$question->id) }}" onclick="event.preventDefault();
+                                document.getElementById('question-delete-form{{ $question->id }}').submit();">
+                                                    <i class="fa fa-trash btn btn-warning btn-sm"></i>
+                                                </a>
+                                                <form id="question-delete-form{{ $question->id }}" action="{{ route('admin.question.destroy',$question->id) }}" method="post" style="display: none;">
+                                                    {{ csrf_field() }} @method('DELETE')
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
 

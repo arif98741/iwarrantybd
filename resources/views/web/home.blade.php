@@ -359,7 +359,7 @@
                             Submit
                         </button>
                     </div>
-
+                </form>
             </div>
         </div>
     </div>
@@ -396,28 +396,29 @@
 <!-- FaQ section end -->
 <!-- Post Your Question -->
 <section class="post-question">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-                <h1>Post Your Questions</h1>
+    <form id="post-question-form" action="{{ url('save_question') }}" method="post">
+
+        @csrf @method('post')
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <h1>Post Your Questions</h1>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-                <form class="ques-form" action="{{ url('save_question') }}" method="post">
-                    @csrf @method('post')
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
                     <div class="form-group">
                         <label for="exampleInputQuestion">Your Question</label>
                         <br>
                         <textarea name="question_data" class="form-control"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-custom ques-btn">
-                        Submit
-                    </button>
-                </form>
+                    <input type="submit" class="btn btn-custom " value="submit">
+
+                </div>
             </div>
         </div>
-    </div>
+
+    </form>
 </section>
 <!-- Post Your Question end -->
 
@@ -473,7 +474,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                 <p style="text-align: center;">© 2020 Iwarranty BD</p>
-                <p style="text-align: center; margin: 0px;" target="_blank">Developed By - <a href="https://facebook.com/arifulislammmc007" class="btn-link">Ariful Islam</a></p>
+
             </div>
         </div>
     </div>
