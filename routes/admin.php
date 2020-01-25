@@ -11,7 +11,7 @@ Route::namespace('Admin')->group(function () {
     Route::match(['get', 'post'], 'setting', 'AdminController@setting')->name('setting');
     Route::resource('faq', 'FaqController')->except(['show']);
     Route::resource('center', 'CenterController')->except(['show']);
-    Route::resource('question', 'QuestionController')->only(['index']);
+    Route::resource('question', 'QuestionController')->only(['index', 'destroy']);
     Route::resource('review', 'ReviewController')->except(['show']);
     Route::get('review/change_review_status/{status}/{id}', 'ReviewController@change_status');
 
