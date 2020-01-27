@@ -8,7 +8,7 @@ $factory->define(Subscriber::class, function (Faker $faker) {
 
     return [
         'name' => $faker->firstName . ' ' . $faker->lastName,
-        'email' => 'abc' . rand(1, 100) . '@gmail.com',
+        'email' => $faker->unique()->safeEmail,
         'password' => Hash::make('123'),
         'address' => $faker->address,
         'mobile' => '01750840217',
