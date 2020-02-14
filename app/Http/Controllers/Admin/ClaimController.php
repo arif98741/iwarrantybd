@@ -15,17 +15,31 @@ class ClaimController extends Controller
         if ($status == 0)
             $title = 'Pending Claims';
         else
-            $title = 'Completed Claims';
+            $title = 'Approved Claims';
         $data = [
             'claims' => Claim::with('subscriber')
                 ->where('status', $status)
                 ->orderBy('id', 'desc')->get(),
             'status' => $title
         ];
-        return $data['status']; 
 
         return view('admin.claim.index')->with($data);
     }
+
+
+    public function rejected_claims()
+    {
+        $data = [
+            'claims' => Claim::with('subscriber')
+                ->where('status', 2)
+                ->orderBy('id', 'desc')->get(),
+            'status' => 'Rejected Claim'
+        ];
+
+        return view('admin.claim.rejected_claim')->with($data);
+    }
+
+
 
     public function change_status($status, $id)
     {
@@ -48,9 +62,10 @@ class ClaimController extends Controller
     public function cancel($id)
     {
         $claim = Claim::find($id);
+        $claim->status = 2;
 
-        if ($claim->delete()) {
-            Session::flash('success', 'Claim has successfully canceled');
+        if ($claim->update()) {
+            Session::flash('success', 'Claim has successfully rejected');
             return redirect('/admin/claim/0');
         } else {
             Session::flash('error', 'Unexpected error Try again later');

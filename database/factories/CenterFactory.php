@@ -10,6 +10,7 @@ $factory->define(Center::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'email' => $faker->unique()->safeEmail,
         'date' => $faker->date('Y-m-d'),
-        'time' => $faker->time('H:m:s')
+        'time' => $faker->time('H:m:s'),
+        'status' => $faker->randomElement(['approved', 'rejected'])
     ];
 });

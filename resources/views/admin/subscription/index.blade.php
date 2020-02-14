@@ -46,13 +46,14 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Mobile</th>
-                                            <th>Address</th>
-                                            <th>Package</th>
-                                            <th>Registered On</th>
-                                            <th>Expire</th>
+                                            <th width="5%">#</th>
+                                            <th width="20%">Name</th>
+                                            <th width="10%">Mobile</th>
+                                            <th width="15%">Address</th>
+                                            <th width="10%">Package</th>
+                                            <th width="10%">Registered On</th>
+                                            <th width="15%">Expire</th>
+                                            <td width="15%">Acion</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,12 +61,20 @@
                                         <tr>
 
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $subscription->subscriber->name }}</td>
+                                            <td>{{ $subscription->subscriber->name }} <br> ({{ $subscription->subscriber->unique_id }})
+                                            </td>
                                             <td>{{ $subscription->subscriber->mobile }}</td>
-                                            <td>{{ $subscription->subscriber->address }}</td>
+                                            <td>
+                                                {{ $subscription->subscriber->address }}</td>
                                             <td>{{ $subscription->package->title }}</td>
                                             <td>{{ date('d-m-Y',strtotime($subscription->created_at)) }}</td>
                                             <td>{{ date('d-m-Y',strtotime($subscription->expire)) }}</td>
+                                            <td>
+
+                                                <a href="{{ url('admin/subscription/mark_as_approve/'.$subscription->id) }}" class="btn btn-primary btn-sm">Approve</a>
+
+                                                <a href="{{ url('admin/subscription/mark_as_reject/'.$subscription->id) }}" class="btn btn-warning btn-sm">Reject</a>
+                                            </td>
                                         </tr>
                                         @endforeach
 

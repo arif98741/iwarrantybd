@@ -1,8 +1,8 @@
-@extends('layout.admin.admin') @section('title','Center') @section('content')
+@extends('layout.admin.admin') @section('title','Service Center') @section('content')
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">Center</h2>
+            <h2 class="page-header">Service Center</h2>
         </div>
     </div>
 
@@ -46,13 +46,13 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Address</th>
-                                            <th>Phone</th>
-                                            <th>Email</th>
-                                            <th>Registered On</th>
-                                            <th>Action</th>
+                                            <th width="10%">#</th>
+                                            <th width="20%">Name</th>
+                                            <th width="10%">Address</th>
+                                            <th width="10%">Phone</th>
+                                            <th width="20%">Email</th>
+                                            <th width="10%">Registered On</th>
+                                            <th width="20%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -66,6 +66,9 @@
                                             <td>{{ $center->email }}</td>
                                             <td>{{ date('d-m-Y',strtotime($center->created_at)) }}</td>
                                             <td>
+                                                @if($center->status !='rejected')
+
+                                                <a href="{{ url('admin/center/change_to_reject/'.$center->id) }}" class="btn btn-warning btn-sm">Reject</a> @endif
                                                 <a href="{{ route('admin.center.edit',$center->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                                 <a class="" href="{{ route('admin.center.destroy',$center->id) }}" onclick="event.preventDefault();
                                 document.getElementById('vendor-delete-form{{ $center->id }}').submit();">

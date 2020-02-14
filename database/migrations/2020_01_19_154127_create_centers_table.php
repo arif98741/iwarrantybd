@@ -18,6 +18,7 @@ class CreateCentersTable extends Migration
             $table->string('email')->unique();
             $table->date('date')->nullable();
             $table->string('time')->nullable();
+            $table->string('status')->default('approved');
             $table->timestamps();
         });
     }

@@ -16,13 +16,14 @@
             </div>
 
             <div class="col-md-12 col-sm-12 col-12">
-                <div class="claim-section">
+                <div style="padding:10px;">
                     <h1>Frequently Asked Questions</h1>
                     @foreach($faqs as $key => $faq)
                     <button class style="display: block; width: 100%; text-align: left; border: none; outline: none; height: 50px;" type="button" data-toggle="collapse" data-target="#collapseExample{{ $key }}" aria-expanded="false" aria-controls="collapseExample{{ $key }}">
                         <i class="fa fa-angle-right fa-1x"></i>
                         &nbsp;{{ $faq->question }}
                     </button>
+                    <hr>
 
                     <div class="collapse" id="collapseExample{{ $key }}">
 

@@ -15,6 +15,7 @@ class CreateVendorsTable extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('location');
+            $table->string('status')->default('approved');
             $table->rememberToken();
             $table->timestamps();
         });

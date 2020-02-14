@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
     {
         factory(Admin::class, 1)->create();
         //factory(Page::class, 2)->create();
-        factory(Subscriber::class, 3)->create();
+        factory(Subscriber::class, 5)->create();
         factory(Claim::class, 5)->create();
         factory(Package::class, 1)->create();
-        factory(Subscription::class, 5)->create();
+        factory(Subscription::class, 10)->create();
         factory(Vendor::class, 3)->create();
         factory(Center::class, 3)->create();
         factory(Setting::class, 1)->create();

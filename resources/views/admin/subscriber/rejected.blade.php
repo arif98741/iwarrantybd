@@ -1,8 +1,8 @@
-@extends('layout.admin.admin') @section('title','Subscriber') @section('content')
+@extends('layout.admin.admin') @section('title',$title.' Subscription') @section('content')
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">Subscriber</h2>
+            <h2 class="page-header">{{$title}} Subscription</h2>
         </div>
     </div>
 
@@ -22,7 +22,7 @@
                 <div class="col-sm-5">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}" style="color: #000 !important;">Home</a></li>
-                        <li class="breadcrumb-item">Subscriber list</li>
+                        <li class="breadcrumb-item">{{$title}} Subscription</li>
                     </ol>
                 </div>
             </div>
@@ -46,41 +46,33 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th width="10%">#</th>
-                                            <th width="15%">Name</th>
-                                            <th width="15%">Unique ID</th>
-                                            <th width="10%">Mobile</th>
-                                            <th width="15%">Address</th>
-                                            <th width="10%">Status</th>
-                                            <th width="10%">Registered On</th>
-                                            <th width="15%">Action</th>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Mobile</th>
+                                            <th>Address</th>
+                                            <th>Package</th>
+                                            <th>Registered On</th>
+                                            <th>Expire</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($subscribers as $key=> $subscriber)
+                                        @foreach($subscriptions as $key=> $subscription)
                                         <tr>
 
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $subscriber->name }}</td>
-                                            <td>{{ $subscriber->unique_id }}</td>
-                                            <td>{{ $subscriber->mobile }}</td>
-                                            <td>{{ $subscriber->address }}</td>
-                                            <td>{{ $subscriber->status }}</td>
-                                            <td>{{ date('d-m-Y',strtotime($subscriber->created_at)) }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.subscriber.show',$subscriber->id) }}" class="btn btn-primary" style="color: #fff;"><i
-                                                        class="fa fa-eye"></i></a> @if($subscriber->status == 'cancelled')
-
-                                                <a href="{{ url('admin/subscriber/change_to_approved/'.$subscriber->id) }}" class="btn btn-primary" style="color: #fff;">Mark as Approve</a> @else
-
-                                                <a href="{{ url('admin/subscriber/change_to_cancelled/'.$subscriber->id) }}" class="btn btn-warning" style="color: #fff;">Mark as Cancel</a> @endif
-
+                                            <td>{{ $subscription->subscriber->name }}
+                                                <br>({{ $subscription->subscriber->unique_id }})
 
                                             </td>
+                                            <td>{{ $subscription->subscriber->mobile }}</td>
+                                            <td>{{ $subscription->subscriber->address }}</td>
+                                            <td>{{ $subscription->package->title }}</td>
+                                            <td>{{ date('d-m-Y',strtotime($subscription->created_at)) }}</td>
+                                            <td>{{ date('d-m-Y',strtotime($subscription->expire)) }}</td>
                                         </tr>
                                         @endforeach
-                                    </tbody>
 
+                                        </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

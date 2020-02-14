@@ -12,6 +12,7 @@ $factory->define(Subscriber::class, function (Faker $faker) {
         'password' => Hash::make('123'),
         'address' => $faker->address,
         'mobile' => '01750840217',
+        'status' => $faker->randomElement(['approved', 'cancelled']),
         'remember_token' => Str::random(10),
     ];
 });

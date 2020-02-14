@@ -1,17 +1,17 @@
-@extends('layout.admin.admin') @section('title','Subscriber') @section('content')
+@extends('layout.admin.admin') @section('title','Vendor Rejected') @section('content')
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">Subscriber</h2>
+            <h2 class="page-header">Vendor Rejected</h2>
         </div>
     </div>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
         @if(Session::has('success'))
-        <p class="alert alert-success message">{{ Session::get('success') }}</p>
+        <p class="alert alert-success" id="message">{{ Session::get('success') }}</p>
         @endif @if(Session::has('error'))
-        <p class="alert alert-warning message">{{ Session::get('error') }}</p>
+        <p class="alert alert-warning" id="message">{{ Session::get('error') }}</p>
         @endif
 
         <div class="container-fluid">
@@ -22,7 +22,7 @@
                 <div class="col-sm-5">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}" style="color: #000 !important;">Home</a></li>
-                        <li class="breadcrumb-item">Subscriber list</li>
+                        <li class="breadcrumb-item">Vendor Rejected</li>
                     </ol>
                 </div>
             </div>
@@ -37,50 +37,47 @@
                 <div class="row">
                     <div class="col-12">
 
-                        <!-- /.card -->
-
                         <div class="card">
-
-                            <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th width="10%">#</th>
-                                            <th width="15%">Name</th>
-                                            <th width="15%">Unique ID</th>
-                                            <th width="10%">Mobile</th>
-                                            <th width="15%">Address</th>
-                                            <th width="10%">Status</th>
-                                            <th width="10%">Registered On</th>
-                                            <th width="15%">Action</th>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Mobile</th>
+                                            <th>Location</th>
+                                            <th>Added On</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($subscribers as $key=> $subscriber)
+                                        @foreach($vendors as $key=> $vendor)
                                         <tr>
 
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $subscriber->name }}</td>
-                                            <td>{{ $subscriber->unique_id }}</td>
-                                            <td>{{ $subscriber->mobile }}</td>
-                                            <td>{{ $subscriber->address }}</td>
-                                            <td>{{ $subscriber->status }}</td>
-                                            <td>{{ date('d-m-Y',strtotime($subscriber->created_at)) }}</td>
+                                            <td>{{ $vendor->name }}</td>
+                                            <td>{{ $vendor->email }}</td>
+                                            <td>{{ $vendor->phone }}</td>
+                                            <td>{{ $vendor->location }}</td>
+                                            <td>{{ date('d-m-Y',strtotime($vendor->created_at)) }}</td>
                                             <td>
-                                                <a href="{{ route('admin.subscriber.show',$subscriber->id) }}" class="btn btn-primary" style="color: #fff;"><i
-                                                        class="fa fa-eye"></i></a> @if($subscriber->status == 'cancelled')
-
-                                                <a href="{{ url('admin/subscriber/change_to_approved/'.$subscriber->id) }}" class="btn btn-primary" style="color: #fff;">Mark as Approve</a> @else
-
-                                                <a href="{{ url('admin/subscriber/change_to_cancelled/'.$subscriber->id) }}" class="btn btn-warning" style="color: #fff;">Mark as Cancel</a> @endif
+                                                <a href="{{ route('admin.vendor.edit',$vendor->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
 
 
+                                                <a class="" href="{{ route('admin.vendor.destroy',$vendor->id) }}" onclick="event.preventDefault();
+                                document.getElementById('vendor-delete-form{{ $vendor->id }}').submit();">
+                                                    <i class="fa fa-trash btn btn-warning btn-sm"></i>
+                                                </a>
+                                                <form id="vendor-delete-form{{ $vendor->id }}" action="{{ route('admin.vendor.destroy',$vendor->id) }}" method="post" style="display: none;">
+                                                    {{ csrf_field() }} @method('DELETE')
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
 
+                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

@@ -1,8 +1,8 @@
-@extends('layout.admin.admin') @section('title','Subscriber') @section('content')
+@extends('layout.admin.admin') @section('title','Rejected Service Center list') @section('content')
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">Subscriber</h2>
+            <h2 class="page-header">Rejected Service Center list</h2>
         </div>
     </div>
 
@@ -22,7 +22,7 @@
                 <div class="col-sm-5">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}" style="color: #000 !important;">Home</a></li>
-                        <li class="breadcrumb-item">Subscriber list</li>
+                        <li class="breadcrumb-item">Rejected Service Center list</li>
                     </ol>
                 </div>
             </div>
@@ -47,40 +47,41 @@
                                     <thead>
                                         <tr>
                                             <th width="10%">#</th>
-                                            <th width="15%">Name</th>
-                                            <th width="15%">Unique ID</th>
-                                            <th width="10%">Mobile</th>
-                                            <th width="15%">Address</th>
-                                            <th width="10%">Status</th>
+                                            <th width="20%">Name</th>
+                                            <th width="10%">Address</th>
+                                            <th width="10%">Phone</th>
+                                            <th width="20%">Email</th>
                                             <th width="10%">Registered On</th>
-                                            <th width="15%">Action</th>
+                                            <th width="20%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($subscribers as $key=> $subscriber)
+                                        @foreach($centers as $key=> $center)
                                         <tr>
 
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $subscriber->name }}</td>
-                                            <td>{{ $subscriber->unique_id }}</td>
-                                            <td>{{ $subscriber->mobile }}</td>
-                                            <td>{{ $subscriber->address }}</td>
-                                            <td>{{ $subscriber->status }}</td>
-                                            <td>{{ date('d-m-Y',strtotime($subscriber->created_at)) }}</td>
+                                            <td>{{ $center->name }}</td>
+                                            <td>{{ $center->location }}</td>
+                                            <td>{{ $center->phone }}</td>
+                                            <td>{{ $center->email }}</td>
+                                            <td>{{ date('d-m-Y',strtotime($center->created_at)) }}</td>
                                             <td>
-                                                <a href="{{ route('admin.subscriber.show',$subscriber->id) }}" class="btn btn-primary" style="color: #fff;"><i
-                                                        class="fa fa-eye"></i></a> @if($subscriber->status == 'cancelled')
+                                                @if($center->status !='rejected')
 
-                                                <a href="{{ url('admin/subscriber/change_to_approved/'.$subscriber->id) }}" class="btn btn-primary" style="color: #fff;">Mark as Approve</a> @else
+                                                <a href="{{ url('admin/center/change_to_reject/'.$center->id) }}" class="btn btn-warning btn-sm">Reject</a> @endif
 
-                                                <a href="{{ url('admin/subscriber/change_to_cancelled/'.$subscriber->id) }}" class="btn btn-warning" style="color: #fff;">Mark as Cancel</a> @endif
-
-
+                                                <a class="" href="{{ route('admin.center.destroy',$center->id) }}" onclick="event.preventDefault();
+                                document.getElementById('vendor-delete-form{{ $center->id }}').submit();">
+                                                    <i class="fa fa-trash btn btn-warning btn-sm"></i>
+                                                </a>
+                                                <form id="vendor-delete-form{{ $center->id }}" action="{{ route('admin.center.destroy',$center->id) }}" method="post" style="display: none;">
+                                                    {{ csrf_field() }} @method('DELETE')
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach
-                                    </tbody>
 
+                                        </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

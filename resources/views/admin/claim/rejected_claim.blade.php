@@ -1,17 +1,17 @@
-@extends('layout.admin.admin') @section('title','Subscriber') @section('content')
+@extends('layout.admin.admin') @section('title',$status) @section('content')
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">Subscriber</h2>
+            <h2 class="page-header">{{ $status }} </h2>
         </div>
     </div>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
         @if(Session::has('success'))
-        <p class="alert alert-success message">{{ Session::get('success') }}</p>
+        <p class="alert alert-success message" id="message">{{ Session::get('success') }}</p>
         @endif @if(Session::has('error'))
-        <p class="alert alert-warning message">{{ Session::get('error') }}</p>
+        <p class="alert alert-warning message" id="message">{{ Session::get('error') }}</p>
         @endif
 
         <div class="container-fluid">
@@ -22,7 +22,7 @@
                 <div class="col-sm-5">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}" style="color: #000 !important;">Home</a></li>
-                        <li class="breadcrumb-item">Subscriber list</li>
+                        <li class="breadcrumb-item">{{ $status }} list</li>
                     </ol>
                 </div>
             </div>
@@ -46,41 +46,31 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th width="10%">#</th>
-                                            <th width="15%">Name</th>
-                                            <th width="15%">Unique ID</th>
-                                            <th width="10%">Mobile</th>
-                                            <th width="15%">Address</th>
-                                            <th width="10%">Status</th>
-                                            <th width="10%">Registered On</th>
-                                            <th width="15%">Action</th>
+                                            <th>#</th>
+                                            <th>Subscriber ID</th>
+                                            <th>Name</th>
+                                            <th>Model</th>
+                                            <th>IMEI</th>
+                                            <th>Problem Pattern</th>
+                                            <th>Recieved on</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($subscribers as $key=> $subscriber)
+                                        @foreach($claims as $key=> $claim)
                                         <tr>
 
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $subscriber->name }}</td>
-                                            <td>{{ $subscriber->unique_id }}</td>
-                                            <td>{{ $subscriber->mobile }}</td>
-                                            <td>{{ $subscriber->address }}</td>
-                                            <td>{{ $subscriber->status }}</td>
-                                            <td>{{ date('d-m-Y',strtotime($subscriber->created_at)) }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.subscriber.show',$subscriber->id) }}" class="btn btn-primary" style="color: #fff;"><i
-                                                        class="fa fa-eye"></i></a> @if($subscriber->status == 'cancelled')
+                                            <td>{{ $claim->subscriber->unique_id }}</td>
+                                            <td>{{ $claim->subscriber->name }}</td>
+                                            <td>{{ $claim->model }}</td>
+                                            <td>{{ $claim->imei }}</td>
+                                            <td>{{ $claim->problem_pattern }}</td>
+                                            <td>{{ date('d-m-Y',strtotime($claim->created_at)) }}</td>
 
-                                                <a href="{{ url('admin/subscriber/change_to_approved/'.$subscriber->id) }}" class="btn btn-primary" style="color: #fff;">Mark as Approve</a> @else
-
-                                                <a href="{{ url('admin/subscriber/change_to_cancelled/'.$subscriber->id) }}" class="btn btn-warning" style="color: #fff;">Mark as Cancel</a> @endif
-
-
-                                            </td>
                                         </tr>
                                         @endforeach
-                                    </tbody>
 
+                                        </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

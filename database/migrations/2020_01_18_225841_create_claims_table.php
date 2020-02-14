@@ -21,7 +21,7 @@ class CreateClaimsTable extends Migration
             $table->string('problem_pattern');
             $table->string('more_details')->nullable();
             $table->string('image')->nullable();
-            $table->tinyinteger('status')->default(0); //pending = 0, completed = 1
+            $table->tinyinteger('status')->default(0); //pending = 0, completed = 1 rejected = 2
             $table->timestamps();
             $table->foreign('subscriber_id')->references('id')->on('subscribers')->onDelete('cascade')->onUpdate('cascade');
         });

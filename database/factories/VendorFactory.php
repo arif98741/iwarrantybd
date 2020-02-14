@@ -10,5 +10,6 @@ $factory->define(Vendor::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->phoneNumber,
         'location' => $faker->address,
+        'status' => $faker->randomElement(['approved', 'rejected'])
     ];
 });

@@ -1,0 +1,37 @@
+@⁨Rakib⁩
+
+//TODO:: this task will have to be completed within today
+
+
+**Every registered users must have a unique USER ID and this ID will carry in every single field of the total content**
+
+
+Dashboard
+1. Every main fields have there own statistics in Dashboard with Total Number, Approve number & Reject/Cancel number
+2. Remove the recent claim field�
+
+
+Registered User
+1. Registered User List
+2. Approved User List
+3. Canceled User List�*** Approve/Cancel might be the flittered option
+
+Claim Request:
+1. Request Pending
+2. Request Approved
+3. Request Rejected
+
+Subscription:
+1. Subscription Pending
+2. Subscription Approved
+3. Subscription Reject
+
+Vendor
+1. Vendor List
+2. Vendor Reject
+3. Vendor Add
+
+Service Centre
+1. Service Centre List
+2. Service Centre Reject
+3. Service Centre Add

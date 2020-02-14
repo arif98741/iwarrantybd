@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Center;
 use Illuminate\Http\Request;
 use App\Models\Subscription;
 use App\Models\Setting;
 use App\Models\Subscriber;
 use App\Models\Claim;
+use App\Models\Vendor;
 use Session;
 
 class AdminController extends Controller
@@ -16,12 +18,19 @@ class AdminController extends Controller
     {
 
         $data = [
-            'total_subscription' => Subscription::all()->count(),
-            'total_subscriber' => Subscriber::all()->count(),
-            'pending_claim' => Claim::where('status', 0)->count(),
-            'completed_claim' => Claim::where('status', 1)->count(),
-            'recent_claims' => Claim::orderBy('id', 'desc')->limit(5)->get(),
-            'total_center' => Claim::count(),
+            'subscriber_total' => Subscriber::all()->count(),
+            'subscriber_approved' => Subscriber::where('status', 'approved')->count(),
+            'subscriber_cancelled' => Subscriber::where('status', 'cancelled')->count(),
+            'subscription_pending' => Subscription::where('status', 'pending')->count(),
+            'subscription_approved' => Subscription::where('status', 'approved')->count(),
+            'subscription_rejected' => Subscription::where('status', 'rejected')->count(),
+            'claim_peding' => Claim::where('status', 0)->count(),
+            'claim_approved' => Claim::where('status', 1)->count(),
+            'claim_rejected' => Claim::where('status', 2)->count(),
+            'vendor_total' => Vendor::all()->count(),
+            'vendor_rejected' => Vendor::where('status', 'rejected')->count(),
+            'center_total' => Center::all()->count(),
+            'center_rejected' => Center::where('status', 'rejected')->count(),
         ];
         return view('admin.dashboard')->with($data);
     }

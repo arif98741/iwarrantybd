@@ -61,7 +61,7 @@
                                         <tr>
 
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $claim->subscriber->id }}</td>
+                                            <td>{{ $claim->subscriber->unique_id }}</td>
                                             <td>{{ $claim->subscriber->name }}</td>
                                             <td>{{ $claim->model }}</td>
                                             <td>{{ $claim->imei }}</td>
@@ -69,9 +69,9 @@
                                             <td>{{ date('d-m-Y',strtotime($claim->created_at)) }}</td>
                                             <td>
                                                 @if($claim->status == 0)
-                                                <a href="{{ url('admin/claim/change_status/pending/'.$claim->id) }}" class="btn btn-primary btn-sm">Mark Complete</a> @else
+                                                <a href="{{ url('admin/claim/change_status/pending/'.$claim->id) }}" class="btn btn-primary btn-sm">Mark Approved</a> @else
                                                 <a href="{{ url('admin/claim/change_status/complete/'.$claim->id) }}" class="btn btn-primary btn-sm">Mark Incomplete</a> @endif @if($status ==0)
-                                                <a href="{{ url('admin/claim/cancel/'.$claim->id) }}" class="btn btn-warning btn-sm" onclick="return(confirm('are you sure to cancel?'))">Cancel</a> @endif
+                                                <a href="{{ url('admin/claim/cancel/'.$claim->id) }}" class="btn btn-warning btn-sm" onclick="return(confirm('are you sure to reject?'))">Reject</a> @endif
                                             </td>
                                         </tr>
                                         @endforeach

@@ -3,28 +3,33 @@ author: Rakib Hossain;
 email: rakibwebdev1@gmail.com;
 */
 /* Global Css*/
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap');
 body{
 	color: #000000;
 	font-size: 15px;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 html {
   scroll-behavior: smooth;
 }
 h1{
-	color: #767489;
-	font-family: 'Roboto', sans-serif;
+	color: black;
+	font-family: 'Open Sans', sans-serif;
 	padding-bottom: 15px;
 	text-align: center;
 	text-transform: uppercase;
+	font-weight:bold;
 }
 section{
-	padding: 50px 0px;
+	padding: 20px 0px;
 	color: #000000;
 }
 .btn-custom{
-	background-color: #767489;
+	background-color: black;
+	color: #ffffff;
+}
+.btn-custom:hover{
+    cursor:pointer;
 	color: #ffffff;
 }
 .align-right{
@@ -36,7 +41,7 @@ section{
 
 /*Header section*/
 .social{
-	padding: 5px 5px !important;
+	padding: 0px 0px !important;
 }
 .phone::before {
   content: "\f10b";
@@ -69,8 +74,26 @@ section{
     font-size: 20px;
 }
 header{
-	background: url(../img/banner-bg.webp);
-	background-size: cover; 
+	background-color: black;
+}
+.banner{
+    animation: bannermate 10s ease-in infinite;
+    background-size: cover;
+}
+@keyframes bannermate{
+	0%{
+		background: url(../img/banner-bg-one.jpg) no-repeat;
+		background-size: cover;
+	}
+	50%{
+		background: url(../img/banner-bg-two.jpg) no-repeat;
+		background-size: cover;
+	}
+	100%{
+		background: url(../img/banner-bg-three.jpg) no-repeat;
+		background-size: cover;
+	}
+
 }
 .logo{
 	height: 60px;
@@ -102,8 +125,31 @@ hr{
 .tag-line h1{
 	padding-top: 100px;
 	text-align: center;
-	padding-bottom: 100px;
+	padding-bottom: 260px;
 	color: #fbf2f2 !important;
+}
+.tag-line h1{
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 3em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 7s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
 }
 /*Offer section*/
 .offer{
@@ -116,21 +162,45 @@ hr{
 /*How it works section*/
 .how-it-works{
 	text-align: center;
+	background-color:#black !important;
+	color: #ffffff;
 }
 .how-it-works h1{
 	text-transform: uppercase;
+	color:#111111;
+}
+.how-bg p{
+    color:gray;
 }
 .how-icon-bg{
-	background-color: #767489;
+	background-color: black;
     width: 50px;
     height: 50px;
     border-radius: 100%;
     display: block;
     margin: 0 auto;
 }
-.card:hover{
-	cursor: pointer;
-	background-color: #989898;
+.card{
+	border:none !important;
+}
+.card-title{
+    font-weight:bold !important;
+}
+.icloud{
+	background: rgb(90,113,220);
+	background: linear-gradient(90deg, rgba(90,113,220,1) 0%, rgba(98,192,248,1) 74%);
+}
+.itunes{
+    background: rgb(245,95,119);
+    background: linear-gradient(90deg, rgba(245,95,119,1) 0%, rgba(122,107,255,1) 74%);
+}
+.appletv{
+    background: rgb(117,155,166);
+    background: linear-gradient(90deg, rgba(117,155,166,1) 0%, rgba(131,167,179,1) 52%);
+}
+.premiumbg{
+    background: rgb(253,206,90);
+    background: linear-gradient(90deg, rgba(253,206,90,1) 0%, rgba(249,180,79,1) 58%);
 }
 .icons{
 	font-size: 25px;
@@ -142,7 +212,6 @@ hr{
  	background-color: #f4f4f4;
  }
  .prices{
- 	width: 45%;
  	display: block;
  	margin: 0 auto;
  }
@@ -156,13 +225,34 @@ hr{
 
  }
  .price-top{
- 	background-color: #5a5a5a;
  	padding-top: 10px;
  }
- .price-top-two{
- 	background: rgb(152,152,152);
-	background: linear-gradient(90deg, rgba(152,152,152,1) 0%, rgba(193,193,193,1) 59%);
- }
+.price-top-one{
+    background-color: maroon;
+ 	
+}
+@keyframes priceonemate{
+	0% {
+    background-color: black;
+	
+  }
+  100%, 0% {
+    background-color: maroon;
+  }
+}
+.price-top-two{
+    background-color: gold;
+ 	
+}
+@keyframes pricetwomate{
+	0% {
+    background-color: black;
+	
+  }
+  100%, 0% {
+    background-color: gold;
+  }
+}
  .price-top h1{
  	color: #ffffff;
  	padding-top: 20px;
@@ -202,6 +292,9 @@ hr{
 }
 
 /*Review Section start*/
+.review{
+	background-color: #add8e6;
+}
 .review h1{
 	text-align: center;
 }
@@ -242,19 +335,14 @@ hr{
     padding: 25px 40px;
     padding-bottom: 100px;
 }
-.faq-one, .faq-two, .faq-three, .faq-four {
-    font-weight: 400;
-    padding: 5px 0px;
-    font-size: 20px;
+hr{
+    border:1px solid black;
 }
 
-.faq-one, .faq-two, .faq-three, .faq-four:hover {
-    cursor: pointer;
-}
 
 /*New css*/
 .claim-section{
-	background-color: #989898;
+	background-color: white;
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
@@ -283,9 +371,48 @@ hr{
 	display: block;
 	margin: 0 auto;
 }
-.contact h1{
-	text-transform: uppercase;
-	text-align: center;
+
+.contact{
+    padding:15px 0px !important;
+    background-color: black;
+    color:white;
+}
+.contact ul li a{
+    color: white !important;
+}
+.contact ul li a:hover{
+    color: white !important;
+    text-decoration:none;
+}
+.contact-address:before{
+  content: "\f015";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  padding-right: 10px;
+  color: white;
+  font-size: 17px;
+}
+.contact-email:before{
+  content: "\f003";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  padding-right: 10px;
+  color: white;
+  font-size: 17px;
+}
+.contact-phone:before{
+  content: "\f10a";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  padding-right: 10px;
+  color: white;
+  font-size: 17px;
 }
 .choose-bottom{
 	margin-top: 20px;
@@ -308,4 +435,81 @@ body{
 }
 .go-top:hover{
     opacity: 1;
+}
+/*css new*/
+.ques-form{
+	width: 70%;
+	position: relative;
+	margin-bottom: 70px;
+}
+.form-filed{
+    height: 40px;
+    margin: 0 auto;
+    padding-left: 20px;
+    border-radius: 25px;
+    opacity: 0.7;
+    border: 1px solid #8c7e7e;
+}
+.ques-btn{
+	height: 40px;
+	width: 170px;
+	border-radius: 25px;
+    color: white;
+    text-align: center;
+    background-color: black;
+}
+.ques-btn-field{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.card-title, .card-text{
+    text-align:center !important;
+}
+.choose-us-section,.card{
+    background-color: #fafafa;
+}
+
+.card:hover .card-text{
+  position: relative;
+  font-family: sans-serif;
+  letter-spacing: 2px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 7s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+.how-card:hover .how-card-text{
+  position: relative;
+  font-family: sans-serif;
+  letter-spacing: 2px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 7s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
 }

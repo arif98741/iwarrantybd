@@ -1,8 +1,8 @@
-@extends('layout.admin.admin') @section('title','Subscriber') @section('content')
+@extends('layout.admin.admin') @section('title','Approved Subscriber') @section('content')
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">Subscriber</h2>
+            <h2 class="page-header">Approved Subscriber</h2>
         </div>
     </div>
 
@@ -46,14 +46,13 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th width="10%">#</th>
-                                            <th width="15%">Name</th>
-                                            <th width="15%">Unique ID</th>
-                                            <th width="10%">Mobile</th>
-                                            <th width="15%">Address</th>
-                                            <th width="10%">Status</th>
-                                            <th width="10%">Registered On</th>
-                                            <th width="15%">Action</th>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Unique ID</th>
+                                            <th>Mobile</th>
+                                            <th>Address</th>
+                                            <th>Registered On</th>
+                                            <th>View</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -65,18 +64,9 @@
                                             <td>{{ $subscriber->unique_id }}</td>
                                             <td>{{ $subscriber->mobile }}</td>
                                             <td>{{ $subscriber->address }}</td>
-                                            <td>{{ $subscriber->status }}</td>
                                             <td>{{ date('d-m-Y',strtotime($subscriber->created_at)) }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.subscriber.show',$subscriber->id) }}" class="btn btn-primary" style="color: #fff;"><i
-                                                        class="fa fa-eye"></i></a> @if($subscriber->status == 'cancelled')
-
-                                                <a href="{{ url('admin/subscriber/change_to_approved/'.$subscriber->id) }}" class="btn btn-primary" style="color: #fff;">Mark as Approve</a> @else
-
-                                                <a href="{{ url('admin/subscriber/change_to_cancelled/'.$subscriber->id) }}" class="btn btn-warning" style="color: #fff;">Mark as Cancel</a> @endif
-
-
-                                            </td>
+                                            <td><a href="{{ route('admin.subscriber.show',$subscriber->id) }}" class="btn btn-primary" style="color: #fff;"><i
+                                                        class="fa fa-eye"></i></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>

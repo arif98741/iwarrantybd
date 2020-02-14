@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>iWarrenty Bd</title>
 
@@ -18,9 +18,9 @@
 
     @include('web.lib.header')
     <div class="container">
-        <div class="card" style>
-            <div class="card-body">
-                <h2 style="color: green;">
+        <div class="card" style="background-color:white;">
+            <div class="card-body" style="display:block;margin:0 auto;">
+                <h2 style="color: black;text-align:center;">
                     Congratulations... <br> Your order for package.
                     <i>{{ $invoice->package->title }}</i> has been received. <br> Your next expire date is {{ date('d-m-Y',strtotime($invoice->expire)) }}
                     <br> We will contact with you soon with your given info...

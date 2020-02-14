@@ -15,6 +15,6 @@ $factory->define(Subscription::class, function (Faker $faker) {
         'subscriber_id' => Subscriber::all()->random(),
         'comment' => $faker->text(50),
         'expire' => $carbon->addDays(365)->format('Y-m-d'),
-        'status' => $faker->randomElement(['approved', 'pending'])
+        'status' => $faker->randomElement(['approved', 'pending', 'rejected'])
     ];
 });

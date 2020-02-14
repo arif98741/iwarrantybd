@@ -21,6 +21,16 @@ class CenterController extends Controller
         return view($this->path . 'index')->with($data);
     }
 
+    public function reject()
+    {
+        $data =   [
+            'centers' => Center::where('status','rejected')->orderBy('id', 'asc')->get()
+
+        ];
+
+        return view($this->path . 'rejected')->with($data);
+    }
+
 
     public function create()
     {
@@ -68,6 +78,20 @@ class CenterController extends Controller
         } else {
             Session::flash('success', 'Center updated successful');
             return redirect(route($this->path . 'index'));
+        }
+    }
+
+    public function change_to_reject($id)
+    {
+        $center = Center::find($id);
+        $center->status = 'rejected';
+
+        if ($center->update()) {
+            Session::flash('success', 'Center has successfully rejected');
+            return redirect(url('admin/center'));
+        } else {
+            Session::flash('error', 'Unexpected error Try again later');
+            return redirect(url('admin/center'));
         }
     }
 }

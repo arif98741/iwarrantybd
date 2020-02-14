@@ -34,7 +34,7 @@
             </div>
 
             <div class="col-md-12 col-sm-12 col-12">
-                <div class="claim-section">
+                <div class="claim-section" style="background-color:white;">
 
                     <form class="post-claim-form" action="{{ url('save_claim') }}" method="post" enctype="multipart/form-data">
                         @csrf @method('post')
@@ -117,7 +117,7 @@
 
 
                         <div class="form-group">
-                            <label for="exampleInputPhoneDetails">Upload Picture</label>
+                            <label for="exampleInputPhoneDetails">Upload Screenshot</label>
                             <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg" class="form-control"> @error('more_details')
                             <div class="form-control-feedback">{{ $message }}</div>
                             @enderror

@@ -21,6 +21,30 @@ class VendorController extends Controller
     }
 
 
+    public function rejected()
+    {
+        $data =   [
+            'vendors' => Vendor::where('status', 'rejected')->orderBy('name', 'asc')->get()
+
+        ];
+        return view('admin.vendor.rejected')->with($data);
+    }
+
+    public function change_to_reject($id)
+    {
+        $vendor = Vendor::find($id);
+        $vendor->status = 'rejected';
+
+        if ($vendor->update()) {
+            Session::flash('success', 'Vendor has successfully rejected');
+            return redirect(url('admin/vendor'));
+        } else {
+            Session::flash('error', 'Unexpected error Try again later');
+            return redirect(url('admin/vendor'));
+        }
+    }
+
+
     public function create()
     {
         $data =   [];
@@ -43,7 +67,6 @@ class VendorController extends Controller
             return redirect(route('admin.vendor.create'));
         }
     }
-
 
     public function edit($id)
     {

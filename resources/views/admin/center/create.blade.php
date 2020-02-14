@@ -1,4 +1,4 @@
-@extends('layout.admin.admin') @section('title','Add Center') @section('content')
+@extends('layout.admin.admin') @section('title','Add Service Center') @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -12,7 +12,7 @@
                         <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('admin.center.index') }}">Center list</a></li>
 
-                        <li class="breadcrumb-item active">Add Center</li>
+                        <li class="breadcrumb-item active">Add Service Center</li>
                     </ol>
                 </div>
             </div>
