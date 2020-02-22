@@ -1,5 +1,5 @@
 @extends('layout.web.web') @section('title','Claim Request') @section('content')
-<section>
+<section class="claim-bg">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -34,7 +34,7 @@
             </div>
 
             <div class="col-md-12 col-sm-12 col-12">
-                <div class="claim-section" style="background-color:white;">
+                <div class="claim-section">
 
                     <form class="post-claim-form" action="{{ url('save_claim') }}" method="post" enctype="multipart/form-data">
                         @csrf @method('post')

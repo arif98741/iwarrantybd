@@ -12,6 +12,8 @@
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Main Css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('asset/front/css/animate.css') }}">
+    <!--Main Css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('asset/front/css/style.css') }}">
 
 </head>
@@ -38,6 +40,10 @@
     </script>
 
     <script src="{{ asset('asset/front/js/collapse.js') }}"></script>
+    <script src="{{ asset('asset/front/js/wow.min.js') }}"></script>
+    <script>
+              new WOW().init();
+              </script>
 </body>
 
 </html>

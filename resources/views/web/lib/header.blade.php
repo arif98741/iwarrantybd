@@ -1,5 +1,5 @@
 <!--Header section start-->
-<header class="home sticky-top" id="home">
+<header class="home sticky-top" id="home"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
@@ -58,17 +58,3 @@
         </div>
     </div>
 </header>
-<section class="banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-12">
-            @if(\Request::route()->getName() == 'home')
-                <div class="tag-line">
-                    <h1>Premium Phone <br>Premium Care</h1>
-                </div>
-
-                @endif
-          </div>
-        </div>
-      </div>
-    </section>

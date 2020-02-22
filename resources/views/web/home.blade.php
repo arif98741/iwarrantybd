@@ -23,6 +23,20 @@
     </div>
 </section>
 @extends('layout.web.web') @section('title','Homepage') @section('content')
+<section class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-12">
+            @if(\Request::route()->getName() == 'home')
+                <div class="tag-line">
+                    <h1>Premium Phone <br>Premium Care</h1>
+                </div>
+
+                @endif
+          </div>
+        </div>
+      </div>
+    </section>
 <!-- offer section start -->
 <section class="offer">
     <div class="container">
@@ -34,9 +48,9 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                 <h1>Offers</h1>
-                <p>
-                    iWarrantyBD is the only premium warranty service provider in Bangladesh for iPhone and iPad users. By taking subscription of iWarrantyBD for a minimal amount, your iPhone service is ensured till the end of the validity expiration date.
-                </p>
+                <h4>Subscription with a Minimal amount <br>
+Warranty ensured till validity Expiration date</h4>
+<p>iWarrantyBD is the only Official Warranty service provider in Bangladesh for iPhone users</p>
             </div>
         </div>
     </div>
@@ -69,10 +83,10 @@
                 <div class="card itunes" style="width: 100%; height:250px;">
                     <div class="card-body">
                         <img src="{{ asset('asset/front/img/itunes.png')}}" class="img-fluid" style="height: 70px;width: 70px;padding-bottom: 5px;display: block;margin: 0 auto;">
-                        <h5 class="card-title">iTunes</h5>
+                        <h5 class="card-title">Apple Music</h5>
                        
                             <p class="card-text itunes-text">
-                            iTunes is one of the core features of the iPhone. Keeping it in mind, iWarrantyBD will provide you iTunes for One year with is cost around <span style="font-weight:bold;">$120 for a year.</span>
+                            Apple music is one of the core features of the iPhone. Keeping it in mind, iWarrantyBD will provide you Apple music for One year with is cost around <span style="font-weight:bold;">$120 for a year.</span>
                         </p>
                         
                         
@@ -119,23 +133,23 @@
                 <div class="row " >
                     <div class="col-md-4 col-sm-4 col-12 wow slideInLeft">
                         <div class="row" style="background-color:#b0a160;margin-top:10px; padding-top:10px;border-radius:10px;">
-                            <div class="col-md-9 col-sm-9 col-12" style="height:255px;background-color:#b0a160;">
-                                <h2 class="align-right">iCloud Lock</h2>
+                            <div class="col-md-9 col-sm-9 col-12" style="height:165px;background-color:#b0a160;">
+                                <h2 class="align-right">International Warranty</h2>
                                     <p class="align-right">
-                                    iCloud lock is a major problem in Bangladesh iPhone users and we are providing the authentic iCloud lock service. On customer demand having proper documentation we have the ability to unlock iCloud and country lock excluding our subscription fee.
+                                    iWarrantyBD is ensuring the Apple international warranty from Singapore which is covered by the Apple warranty, an Apple Care+ plan, or Apple Consumer law.
                                 </p>
                                 
                                 
                             </div>
                             <div class="col-md-3 col-sm-3 col-12">
-                                <div class="how-icon-bg">
+                                <div class="how-icon-bg" style="margin-top: 52px;">
                                     <i class="fa fa-unlock-alt icons" aria-hidden="true"></i>
                                     
                                 </div>
                             </div>
                         </div>
                         <div class="row" style="background-color:#2c3e50;margin-top:10px;padding-top:10px;border-radius:10px;">
-                            <div class="col-md-9 col-sm-9 col-12" style="height:285px;background-color:#2c3e50;">
+                            <div class="col-md-9 col-sm-9 col-12" style="height:170px;background-color:#2c3e50;">
                                 <h2 class="align-right">Claim Requirements</h2>
                             
                                     <p class="align-right">
@@ -145,45 +159,42 @@
                                 
                             </div>
                             <div class="col-md-3 col-sm-3 col-12">
-                                <div class="how-icon-bg">
+                                <div class="how-icon-bg" style="margin-top: 52px;">
                                     <i class="fa fa-file-powerpoint-o icons" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="background-color:#fd746c;margin-top:10px;padding-top:10px;border-radius:10px;">
-                            <div class="col-md-9 col-sm-9 col-12" style="height:170px;background-color:#fd746c;">
-                                <h2 class="align-right">Active Subscriber</h2>
-                                
-                                    <p class="align-right">
-                                    You have to be an active subscriber to get a premium service from iWarrantyBD.com
-                                </p>
-                                
-                                
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-12">
-                                <div class="how-icon-bg">
+                        
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-12 wow fadeInDown">
+                        <img src="{{ asset('asset/front/img/iphone-bg.png')}}" alt="Iphone Image" class="img-fluid" style="width:70%;">
+                        <div style="background-color:#fd746c;margin-top:10px;padding-top:10px;border-radius:10px;width: 96%;display: block;margin: 0 auto;text-align: center;">
+                            <div style="height:150px;background-color:#fd746c;">
+                              <div class="how-icon-bg">
                                     <i class="fa fa-users icons" aria-hidden="true"></i>
                                 </div>
+                                <h2>Active Subscriber</h2>
+                                
+                                    <p>
+                                    You have to be an active subscriber to get a premium service from iWarrantyBD.com
+                                </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-12">
-                        <img src="{{ asset('asset/front/img/iphone-bg.png')}}" alt="Iphone Image" class="img-fluid" style="margin-top:110px;">
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-12 wow slideInRight">
                         <div class="row" style="background-color:#5b8c85;margin-top:10px;padding-top:10px;border-radius:10px;">
                             <div class="col-md-3 col-sm-3 col-12">
-                                <div class="how-icon-bg">
+                                <div class="how-icon-bg" style="margin-top: 52px;">
                                     <i class="fa fa-calendar-check-o icons" aria-hidden="true"></i>
                                 </div>
 
                             </div>
-                            <div class="col-md-9 col-sm-9 col-12" style="height:255px;background-color:#5b8c85;">
-                                <h2 class="align-left">Get Quicker Service</h2>
+                            <div class="col-md-9 col-sm-9 col-12" style="height:165px;background-color:#5b8c85;">
+                                <h2 class="align-left">Original Apple Parts</h2>
                                 
                                     <p class="align-left">
-                                    We are providing the best solution within the lowest possible period of time keeping in mind the value of the customer’s valuable time.
+                                    We are ensuring a guarantee of repairing or replacing your device with the original Apple Parts.
                                 </p>
                                 
                                 
@@ -191,38 +202,22 @@
                         </div>
                         <div class="row" style="background-color:#1fddff;margin-top:10px;padding-top:10px;border-radius:10px;">
                             <div class="col-md-3 col-sm-3 col-12">
-                                <div class="how-icon-bg">
+                                <div class="how-icon-bg" style="margin-top: 52px;">
                                     <i class="fa fa-cog icons" aria-hidden="true"></i>
                                 </div>
 
                             </div>
-                            <div class="col-md-9 col-sm-9 col-12" style="height:285px;background-color:#1fddff;">
+                            <div class="col-md-9 col-sm-9 col-12" style="height:170px;background-color:#1fddff;">
                                 <h2 class="align-left">Apple expert service</h2>
                                 
                                     <p class="align-left">
-                                    All the services are ensured by Apple expert. We will give our 100 % effort on the problems of iPhone. Singapore is our main service point where we send all our iPhone and Customer able to see the status of his phone through iWarrantyBD
+                                    All the services are ensured by Apple expert. We will give our 100 % effort on the problems of iPhone. Singapore is our main service point where we send all our iPhone
                                 </p>
                                
                                 
                             </div>
                         </div>
-                        <div class="row how-card" style="background-color:#c2e59c; margin-top:10px;padding-top:10px;border-radius:10px;">
-                            <div class="col-md-3 col-sm-3 col-12">
-                                <div class="how-icon-bg">
-                                    <i class="fa fa-wrench icons" aria-hidden="true"></i>
-                                </div>
-
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-12 " style="height:170px;background-color:#c2e59c;">
-                                <h2 class="align-left">Original Apple Parts</h2>
-                                
-                                    <p class="align-left how-card-text">
-                                    We are ensuring a guarantee of repairing or replacing your device with the original Apple parts.
-                                </p>
-                               
-                                
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                     
@@ -239,19 +234,19 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12 price-heading">
                 <h1>Check Our Prices</h1>
-                <p>
+                <p class="price-tag-text">
                     Lowest priced Apple service for you premium phone.
                 </p>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-6 col-12">
+            <div class="col-md-6 col-sm-6 col-12 wow fadeOutLeftBig delay-2s infinite">
                 <div class="prices" style="width:100%;">
-                    <div class="col-md-12 col-sm-12 col-12 price-top price-top-one">
+                    <div class="col-md-12 col-sm-12 col-12 price-top price-top-two">
                         <h2 class="package">PACKAGE</h2>
                         <hr>
                         <h1>
-                            <sub>BDT</sub> 5000
+                            BDT 5000
                         </h1>
                         <h6>per year</h6>
 
@@ -274,23 +269,23 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-12">
+            <div class="col-md-6 col-sm-6 col-12 wow fadeOutRightBig">
                 <div class="prices" style="width:100%;">
-                    <div class="col-md-12 col-sm-12 col-12 price-top price-top-two">
+                    <div class="col-md-12 col-sm-12 col-12 price-top price-top-one">
                         <h2 class="package">PACKAGE</h2>
                         <hr>
                         <h1>
-                            <sub>BDT</sub> 5000
+                            BDT 3000
                         </h1>
                         <h6>per year</h6>
 
                     </div>
                     <div class="col-md-12 col-sm-12 col-12 price-bottom">
-                        <h6 class="project">Warranty Service from Singapore</h6>
-                        <h6>50GB iCloud for 1 Year</h6>
-                        <h6>Free iMusic for 1 Year</h6>
-                        <h6>Apple TV+ for 1 Year</h6>
-                        <h6>1 Month Parts Replacement Guarantee</h6>
+                        <h6 class="project">50 GB icloud storage free for 6 month.</h6>
+                        <h6>Apple music free for 6 month</h6>
+                        <h6>25% discount on servicing water damage</h6>
+                        <h6>25% discount on servicing broken display</h6>
+                        <h6>3 months after sales parts replacement</h6>
                         @if(Auth::guard('subscriber')->check())
                         <a href="{{url('save_subscription')}}" style="max-width: 220px; color: #fff;" class="btn btn-custom btn-buy-now">
                             BUY
